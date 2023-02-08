@@ -1,5 +1,6 @@
 import pytest
 from selene.support.shared import browser
+from utils import attach
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -11,5 +12,11 @@ def browser_management():
     browser.config.window_height = 1000
 
     yield
+
+    attach.add_html(browser)
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
+
 
     # browser.quit()
