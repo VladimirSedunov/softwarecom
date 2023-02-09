@@ -1,6 +1,7 @@
 import json
 import time
 import allure
+import pytest
 from allure_commons.types import Severity, AttachmentType
 from selene import command, be, have
 from selene.support.shared import browser
@@ -10,14 +11,15 @@ from selene.support.shared.jquery_style import s
 from allure import attachment_type
 
 
-@allure.tag("web")
+# @allure.tag("web")
+# @allure.label("owner", "eroshenkoam")
+# @allure.feature("Задачи в репозитории")
+# @allure.story("Авторизованный пользователь может создать задачу в репозитории")
+# @allure.link("https://github.com", name="Testing")
 @allure.severity(Severity.CRITICAL)
-@allure.label("owner", "eroshenkoam")
-@allure.feature("Задачи в репозитории")
-@allure.story("Авторизованный пользователь может создать задачу в репозитории")
-@allure.link("https://github.com", name="Testing")
+@pytest.mark.demo
 def test_show_main_menu_and_all_submenu():
-    allure.dynamic.severity(Severity.BLOCKER)
+    # allure.dynamic.severity(Severity.CRITICAL)
     with allure.step("Открываем главную страницу"):
         browser.open("/")
         assert browser.element('.page .company_about').element('h1').should(have.exact_text('Софт Компани — цифровой системный интегратор.'))
@@ -92,10 +94,10 @@ def test_show_main_menu_and_all_submenu():
 
     go_back_main_page()
 
-    allure.attach("Text content", name="Text", attachment_type=attachment_type.TEXT)
-    allure.attach("<h1>Hello, world</h1>", name="Html", attachment_type=attachment_type.HTML)
-    allure.attach(json.dumps({"first": 1, "second": 2}), name="Json", attachment_type=attachment_type.JSON)
-
+    with allure.step("Пример вложений (attachments): TEXT, HTML, JSON"):
+        allure.attach("Text content", name="Text", attachment_type=attachment_type.TEXT)
+        allure.attach("<h1>Hello, world</h1>", name="Html", attachment_type=attachment_type.HTML)
+        allure.attach(json.dumps({"first": 1, "second": 2}), name="Json", attachment_type=attachment_type.JSON)
 
 
 SLEEP_TIME = 1.0
@@ -103,7 +105,7 @@ SLEEP_TIME2 = 2
 
 
 def hover_wait_and_click_element(menu, el_name):
-    menu.hover()
+    menu.hover().wait_until(browser.element(el_name).should(be.clickable))
     time.sleep(SLEEP_TIME)
     m = browser.element(el_name)
     m.should(be.clickable)
@@ -114,7 +116,7 @@ def hover_wait_and_click_element(menu, el_name):
 
 
 def hover_wait_and_click_element_and_subelement(menu, el_name, sub_name):
-    menu.hover()
+    menu.hover().wait_until(browser.element(el_name).should(be.clickable))
     time.sleep(SLEEP_TIME)
     m = browser.element(el_name)
     m.should(be.clickable)

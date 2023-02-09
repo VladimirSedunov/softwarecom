@@ -1,3 +1,4 @@
+import allure
 import pytest
 from selene.support.shared import browser
 from utils import attach
@@ -13,10 +14,10 @@ def browser_management():
 
     yield
 
-    attach.add_html(browser)
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    attach.add_video(browser)
-
+    # with allure.step("Пример из QA-guru вложений (attachments): TEXT, HTML, JSON"):
+    #     attach.add_html(browser)
+    #     attach.add_screenshot(browser)
+    #     attach.add_logs(browser)
+    #     attach.add_video(browser)
 
     # browser.quit()
