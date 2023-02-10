@@ -8,6 +8,7 @@ from selene.support.shared import browser
 
 
 @allure.severity(Severity.NORMAL)
+@allure.title('Открыть Несуществующую Страницу')
 @pytest.mark.demo
 def test_Открыть_Несуществующую_Страницу():
     with allure.step("Открываем несуществующую страницу"):
@@ -20,7 +21,7 @@ def test_Открыть_Несуществующую_Страницу():
             allure.attach(browser.driver.get_screenshot_as_png(), name="Страница_не_найдена", attachment_type=AttachmentType.JPG)
 
         browser.element('.not-fount-collum-2 [href="/"]').should(have.exact_text('главной страницей')).click()
-        time.sleep(1)
+        # time.sleep(1)
 
     with allure.step("Переход на главную страницу"):
         assert browser.element('.page .company_about').element('h1').should(

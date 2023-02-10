@@ -52,7 +52,7 @@ def test_show_main_menu_and_all_submenu():
             allure.attach(browser.driver.get_screenshot_as_png(), name="politika_konfidentsialnosti", attachment_type=AttachmentType.PNG)
 
         # Решения
-        menu = browser.element('.js-first-level > [href="/solutions/"]')
+        menu = browser.element('.js-first-level > [href="/solutions/"]').should(be.clickable)
         elem_name = '.js-first-level .js-second-level'
 
         hover_wait_and_click_element_and_subelement(menu, f'{elem_name} [href="/solutions/razrabotka-po/"]',
@@ -64,7 +64,7 @@ def test_show_main_menu_and_all_submenu():
         assert s('.solution-element-title').should(have.exact_text('Управление технологическими процессами (УТП)'))
 
         # Отрасли
-        menu = browser.element('.js-first-level > [href="/branch/"]')
+        menu = browser.element('.js-first-level > [href="/branch/"]').should(be.clickable)
         elem_name = '.js-first-level .js-second-level'
         hover_wait_and_click_element(menu, f'{elem_name} > [href="/branch/gosudarstvennyy-sektor/"]')
         assert s('.controls-page-box .h1').should(have.exact_text('Государственный сектор'))
@@ -73,15 +73,15 @@ def test_show_main_menu_and_all_submenu():
         assert s('.controls-page-box .h1').should(have.exact_text('Транспорт и логистика'))
 
         # Портфолио, Пресс-центр, Контакты
-        menu = browser.element('.js-first-level > [href="/clients/"]')
+        menu = browser.element('.js-first-level > [href="/clients/"]').should(be.clickable)
         hover_wait_and_click_element_simple(menu)
         assert s('.controls-page-box .h1').should(have.exact_text('Клиенты'))
 
-        menu = browser.element('.js-first-level > [href="/press-center/"]')
+        menu = browser.element('.js-first-level > [href="/press-center/"]').should(be.clickable)
         hover_wait_and_click_element_simple(menu)
         assert s('.controls-page-box .h1').should(have.exact_text('Новости'))
 
-        menu = browser.element('.js-first-level > [href="/contacts/"]')
+        menu = browser.element('.js-first-level > [href="/contacts/"]').should(be.clickable)
         hover_wait_and_click_element_simple(menu)
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты'))
 
@@ -100,8 +100,8 @@ def test_show_main_menu_and_all_submenu():
         allure.attach(json.dumps({"first": 1, "second": 2}), name="Json", attachment_type=attachment_type.JSON)
 
 
-SLEEP_TIME = 1.0
-SLEEP_TIME2 = 2
+SLEEP_TIME = 0.0
+SLEEP_TIME2 = 0
 
 
 def hover_wait_and_click_element(menu, el_name):
@@ -139,7 +139,7 @@ def hover_wait_and_click_element_simple(menu):
 
 def leaf_over_bottom_blocks():
     browser.element('.callback-footer').perform(command.js.scroll_into_view)
-    time.sleep(1)
+    time.sleep(SLEEP_TIME)
     vpravo = browser.element('.c-next, .preview-next')
     for i in range(4):
         vpravo.click()

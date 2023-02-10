@@ -16,29 +16,33 @@ def test_Фильтрация_Клиентов_В_Портфолио():
         assert s('.controls-page-box .h1').should(have.exact_text('Клиенты')) is not None
 
     try:
-        print()
+        # print()
         with allure.step("Цикл по всем отраслям"):
             otrasli = browser.all('#branchFilter > option')
             for j in range(0, len(otrasli)):
                 dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section')
                 dropdown_otrasl_elem.click()
-                time.sleep(1)
+                # time.sleep(1)
                 select_block = browser.all('.ik_select_block')[1].all('.ik_select_option')
                 by_text = select_block[j].locate().text
-                print(f'Отрасль: {by_text}')
+                # print(f'Отрасль: {by_text}')
                 select_block[j].element('..').click()
-                time.sleep(1)
+                # time.sleep(1)
 
                 uslugi = browser.all('#solutionFilter > option')
-                for j_usluga in range(0, len(uslugi)):
+                list_nums = list(range(0, len(uslugi)))
+                list_nums.append(0)
+                list_nums.pop(0)
+                # print(list_nums)
+                for j_usluga in list_nums:
                     dropdown_usluga_elem = browser.all('.select-title').element_by(have.exact_text('Услуга')).element('..').element('.select-section')
                     dropdown_usluga_elem.click()
-                    time.sleep(1)
+                    # time.sleep(1)
                     select_block_usluga = browser.all('.ik_select_block')[1].all('.ik_select_option')
                     by_text_usluga = select_block_usluga[j_usluga].locate().text
-                    print(f'         Услуга: {by_text_usluga}')
+                    # print(f'         Услуга: {by_text_usluga}')
                     select_block_usluga[j_usluga].element('..').click()
-                    time.sleep(1)
+                    # time.sleep(1)
 
     except:
         with allure.step("Делаем скриншот"):
