@@ -6,20 +6,12 @@ from allure_commons.types import Severity, AttachmentType
 from selene import command, be, have
 from selene.support.shared import browser
 from selene.support.shared.jquery_style import s
-# from selenium.webdriver import Keys
-# from selenium.webdriver.common.action_chains import ActionChains
 from allure import attachment_type
 
 
-# @allure.tag("web")
-# @allure.label("owner", "eroshenkoam")
-# @allure.feature("Задачи в репозитории")
-# @allure.story("Авторизованный пользователь может создать задачу в репозитории")
-# @allure.link("https://github.com", name="Testing")
 @allure.severity(Severity.CRITICAL)
 @pytest.mark.demo
 def test_show_main_menu_and_all_submenu():
-    # allure.dynamic.severity(Severity.CRITICAL)
     with allure.step("Открываем главную страницу"):
         browser.open("/")
         assert browser.element('.page .company_about').element('h1').should(have.exact_text('Софт Компани — цифровой системный интегратор.'))
@@ -167,4 +159,3 @@ def go_throw_main_menu():
 def go_back_main_page():
     browser.element('[href="/"]').should(be.clickable).click()
     time.sleep(SLEEP_TIME2)
-
