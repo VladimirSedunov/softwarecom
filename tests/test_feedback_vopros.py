@@ -10,6 +10,7 @@ from selene.support.shared.jquery_style import s
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_positive():
     with allure.step("Открываем страницу Контакты"):
         browser.open("/contacts/")

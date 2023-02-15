@@ -2,7 +2,7 @@ from selene import have, be
 import datetime
 import sys
 from selenium.webdriver import Keys
-from utils import config
+from tests.test_claim_dir.utils import config
 
 
 class Dropdown:

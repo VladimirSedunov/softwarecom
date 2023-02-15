@@ -1,7 +1,5 @@
-import allure
 import pytest
 from selene.support.shared import browser
-from utils import attach
 
 
 @pytest.fixture(scope="session", autouse=True)

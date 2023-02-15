@@ -10,26 +10,20 @@ from selene.support.shared.jquery_style import s
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
-@allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.parametrize("fio, email, phone, text, is_error, result_message",
+@pytest.mark.parametrize("title, fio, email, phone, text, is_error, result_message",
                          [
-                             ('Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', False,
-                              'Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'),
+                             ('Позитивный сценарий','Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', False,
+                              '!!! *** !!!   Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'),
 
-                             ('', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', True,
-                              'Укажите Ваше Ф.И.О!'),
-
-                             ('Тут Пишем ФИО', '', 'Это_телефон', 'Это сообщение', True,
-                              'Укажите правильный e-mail!'),
-
-                             ('Тут Пишем ФИО', 'this_is@email.mail', '', 'Это сообщение', True,
-                              'Укажите Ваш контактный телефон!'),
-
-                             ('Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', '', True,
-                              'Введите Ваше сообщение!')
+                             ('Нет ФИО', '', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', True, 'Укажите Ваше Ф.И.О!'),
+                             ('Нет email', 'Тут Пишем ФИО', '', 'Это_телефон', 'Это сообщение', True, 'Укажите правильный e-mail!'),
+                             ('Нет телефона', 'Тут Пишем ФИО', 'this_is@email.mail', '', 'Это сообщение', True, 'Укажите Ваш контактный телефон!'),
+                             ('Нет сообщения', 'Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', '', True, 'Введите Ваше сообщение!')
                          ])
-def test_parametrize(fio, email, phone, text, is_error, result_message):
+def test_parametrize(title, fio, email, phone, text, is_error, result_message):
+
+    allure.dynamic.title(title)
+
     with allure.step("Открываем страницу Контакты"):
         browser.open("/contacts/")
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
@@ -45,9 +39,9 @@ def test_parametrize(fio, email, phone, text, is_error, result_message):
         time.sleep(1)
         feedback_form.element('[type=submit][name=send]').should(be.clickable).click()
     if not is_error:
-        with allure.step("Успех: запрос принят"):
+        with allure.step(f"Успех: {result_message}"):
             s('.msg-wrap').should(have.exact_text(result_message))
     else:
-        with allure.step("Сообщение об ошибке: Укажите Ваше Ф.И.О!"):
+        with allure.step(f"Сообщение об ошибке: {result_message}"):
             feedback_form.element('.js-error').should(have.exact_text(result_message))
     time.sleep(1)
