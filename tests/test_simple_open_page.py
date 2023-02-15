@@ -8,7 +8,7 @@ from selene.support.shared import browser
 
 
 @allure.severity(Severity.NORMAL)
-@allure.title('Открыть Несуществующую Страницу')
+@allure.title('Открыть несуществующую страницу')
 @pytest.mark.demo
 def test_Открыть_Несуществующую_Страницу():
     with allure.step("Открываем несуществующую страницу"):
