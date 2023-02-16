@@ -16,7 +16,7 @@ def test_positive():
         browser.open("/contacts/")
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
-    with allure.step("Открываем диалоговое окно Обратная Связь"):
+    with allure.step("Открываем диалоговое окно Обратная Связь / Задать вопрос"):
         s('.callback-panel-btn').click()
         s('.c-ico-chat').click()
         feedback_form = browser.element('#feedbackForm')
@@ -38,7 +38,7 @@ def test_blank_fio():
         browser.open("/contacts/")
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
-    with allure.step("Открываем диалоговое окно Обратная Связь"):
+    with allure.step("Открываем диалоговое окно Обратная Связь / Задать вопрос"):
         s('.callback-panel-btn').click()
         s('.c-ico-chat').click()
         feedback_form = browser.element('#feedbackForm')
@@ -48,12 +48,12 @@ def test_blank_fio():
         feedback_form.element('[name=email]').set_value('this_is@email.mail')
         feedback_form.element('[name=phone]').set_value('Это_телефон')
         feedback_form.element('[name=text]').set_value('Это сообщение')
-        time.sleep(1)
+        pers_data_agree = feedback_form.element('.agreeDiv').should(be.clickable).click()
         feedback_form.element('[type=submit][name=send]').should(be.clickable).click()
 
         with allure.step("Сообщение об ошибке: Укажите Ваше Ф.И.О!"):
             feedback_form.element('.js-error').should(have.exact_text('Укажите Ваше Ф.И.О!'))
-
+        time.sleep(5)
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
@@ -62,7 +62,7 @@ def test_blank_email():
         browser.open("/contacts/")
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
-    with allure.step("Открываем диалоговое окно Обратная Связь"):
+    with allure.step("Открываем диалоговое окно Обратная Связь / Задать вопрос"):
         s('.callback-panel-btn').click()
         s('.c-ico-chat').click()
         feedback_form = browser.element('#feedbackForm')
@@ -86,7 +86,7 @@ def test_blank_phone():
         browser.open("/contacts/")
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
-    with allure.step("Открываем диалоговое окно Обратная Связь"):
+    with allure.step("Открываем диалоговое окно Обратная Связь / Задать вопрос"):
         s('.callback-panel-btn').click()
         s('.c-ico-chat').click()
         feedback_form = browser.element('#feedbackForm')
@@ -105,12 +105,12 @@ def test_blank_phone():
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
-def test_blank_phone():
+def test_blank_text():
     with allure.step("Открываем страницу Контакты"):
         browser.open("/contacts/")
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
-    with allure.step("Открываем диалоговое окно Обратная Связь"):
+    with allure.step("Открываем диалоговое окно Обратная Связь / Задать вопрос"):
         s('.callback-panel-btn').click()
         s('.c-ico-chat').click()
         feedback_form = browser.element('#feedbackForm')

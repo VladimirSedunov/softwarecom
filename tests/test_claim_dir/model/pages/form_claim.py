@@ -13,6 +13,7 @@ class Form_Claim:
     phone: str
     email: str
     text: str
+    pers_data_agree: bool
     send_button: str
 
     def __init__(self):
@@ -23,6 +24,7 @@ class Form_Claim:
         self.phone = ''
         self.email = ''
         self.text = ''
+        self.pers_data_agree = True
 
     def fill(self, claim: Claim):
         feedback_form = browser.element(self.orderForm_CSS)
@@ -30,6 +32,9 @@ class Form_Claim:
         feedback_form.element('[name=phone]').set_value(claim.phone)
         feedback_form.element('[name=email]').set_value(claim.email)
         feedback_form.element('[name=text]').set_value(claim.text)
+        if claim.pers_data_agree != len(feedback_form.all('.agreeDiv.selected').should(be.existing)) > 0:
+            feedback_form.element('.agreeDiv').should(be.clickable).click()
+
 
     def submit(self):
         browser.element(self.orderForm_CSS).element('[type=submit][name=send]').should(be.clickable).click()
