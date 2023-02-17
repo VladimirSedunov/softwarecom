@@ -12,104 +12,117 @@ from allure import attachment_type
 @allure.severity(Severity.CRITICAL)
 @pytest.mark.demo
 def test_show_main_menu_and_all_submenu():
-    with allure.step("Открываем главную страницу"):
+    with allure.step("ТС2.1. Открыть главную страницу"):
         browser.open("/")
         assert browser.element('.page .company_about').element('h1').should(have.exact_text('Софт Компани — цифровой системный интегратор.'))
 
-    with allure.step("Проходим по верхнему меню"):
+    with allure.step("ТС2.2. Пройти по верхнему меню наведением курсора мыши"):
         go_throw_main_menu()
 
-    with allure.step("Проходим по всем подменю"):
+    with allure.step("ТС2.3. Пройти по избранным пунктам подменю"):
 
         # О компании
         menu = browser.element('.js-first-level > [href="/about/"]')
         elem_name = '.js-first-level .js-second-level'
 
-        hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/"]')
-        assert s('.controls-page-box .h1').should(have.exact_text('Компания'))
+        with allure.step("Открыть страницу 'Компания'"):
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/"]')
+            assert s('.controls-page-box .h1').should(have.exact_text('Компания'))
 
-        hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/opinions/"]')
-        assert s('.controls-page-box .h1').should(have.exact_text('Отзывы'))
+        with allure.step("Открыть страницу 'Отзывы'"):
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/opinions/"]')
+            assert s('.controls-page-box .h1').should(have.exact_text('Отзывы'))
 
-        hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/certificates/"]')
-        assert s('.controls-page-box .h1').should(have.exact_text('Лицензии'))
+        with allure.step("Открыть страницу 'Лицензии'"):
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/certificates/"]')
+            assert s('.controls-page-box .h1').should(have.exact_text('Лицензии'))
 
-        hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/career/"]')
-        assert s('.controls-page-box .h1').should(have.exact_text('Карьера'))
+        with allure.step("Открыть страницу 'Карьера'"):
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/career/"]')
+            assert s('.controls-page-box .h1').should(have.exact_text('Карьера'))
 
-        hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/politika-konfidentsialnosti/"]')
-        assert s('.controls-page-box .h1').should(have.exact_text('Политика конфиденциальности'))
+        with allure.step("Открыть страницу 'Политика конфиденциальности'"):
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/politika-konfidentsialnosti/"]')
+            assert s('.controls-page-box .h1').should(have.exact_text('Политика конфиденциальности'))
 
-        with allure.step("Делаем скриншот"):
+        with allure.step("Сделать скриншот страницы 'Политика конфиденциальности'"):
             allure.attach(browser.driver.get_screenshot_as_png(), name="politika_konfidentsialnosti", attachment_type=AttachmentType.PNG)
 
         # Решения
         menu = browser.element('.js-first-level > [href="/solutions/"]').should(be.clickable)
         elem_name = '.js-first-level .js-second-level'
 
-        hover_wait_and_click_element_and_subelement(menu, f'{elem_name} [href="/solutions/razrabotka-po/"]',
-                     f'{elem_name} [href="/solutions/razrabotka-po/razrabotka-programmnogo-obespecheniya/"]')
-        assert s('.solution-element-title').should(have.exact_text('Разработка ПО и автоматизация процессов'))
+        with allure.step("Открыть страницу 'Разработка ПО и автоматизация процессов'"):
+            hover_wait_and_click_element_and_subelement(menu, f'{elem_name} [href="/solutions/razrabotka-po/"]',
+                         f'{elem_name} [href="/solutions/razrabotka-po/razrabotka-programmnogo-obespecheniya/"]')
+            assert s('.solution-element-title').should(have.exact_text('Разработка ПО и автоматизация процессов'))
 
-        hover_wait_and_click_element_and_subelement(menu, f'{elem_name} [href="/solutions/produkty-i-korobochnye-resheniya/"]',
-                     f'{elem_name} [href="/solutions/produkty-i-korobochnye-resheniya/upravlenie-tekhnologicheskimi-protsessami-utp/"]')
-        assert s('.solution-element-title').should(have.exact_text('Управление технологическими процессами (УТП)'))
+        with allure.step("Открыть страницу 'Управление технологическими процессами (УТП)''"):
+            hover_wait_and_click_element_and_subelement(menu, f'{elem_name} [href="/solutions/produkty-i-korobochnye-resheniya/"]',
+                         f'{elem_name} [href="/solutions/produkty-i-korobochnye-resheniya/upravlenie-tekhnologicheskimi-protsessami-utp/"]')
+            assert s('.solution-element-title').should(have.exact_text('Управление технологическими процессами (УТП)'))
 
         # Отрасли
         menu = browser.element('.js-first-level > [href="/branch/"]').should(be.clickable)
         elem_name = '.js-first-level .js-second-level'
-        hover_wait_and_click_element(menu, f'{elem_name} > [href="/branch/gosudarstvennyy-sektor/"]')
-        assert s('.controls-page-box .h1').should(have.exact_text('Государственный сектор'))
 
-        hover_wait_and_click_element(menu, f'{elem_name} > [href="/branch/transport-i-logistika/"]')
-        assert s('.controls-page-box .h1').should(have.exact_text('Транспорт и логистика'))
+        with allure.step("Открыть страницу 'Государственный сектор'"):
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/branch/gosudarstvennyy-sektor/"]')
+            assert s('.controls-page-box .h1').should(have.exact_text('Государственный сектор'))
+
+        with allure.step("Открыть страницу 'Транспорт и логистика'"):
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/branch/transport-i-logistika/"]')
+            assert s('.controls-page-box .h1').should(have.exact_text('Транспорт и логистика'))
 
         # Портфолио, Пресс-центр, Контакты
-        menu = browser.element('.js-first-level > [href="/clients/"]').should(be.clickable)
-        hover_wait_and_click_element_simple(menu)
-        assert s('.controls-page-box .h1').should(have.exact_text('Клиенты'))
+        with allure.step("Открыть страницу 'Клиенты'"):
+            menu = browser.element('.js-first-level > [href="/clients/"]').should(be.clickable)
+            hover_wait_and_click_element_simple(menu)
+            assert s('.controls-page-box .h1').should(have.exact_text('Клиенты'))
 
-        menu = browser.element('.js-first-level > [href="/press-center/"]').should(be.clickable)
-        hover_wait_and_click_element_simple(menu)
-        assert s('.controls-page-box .h1').should(have.exact_text('Новости'))
+        with allure.step("Открыть страницу 'Новости'"):
+            menu = browser.element('.js-first-level > [href="/press-center/"]').should(be.clickable)
+            hover_wait_and_click_element_simple(menu)
+            assert s('.controls-page-box .h1').should(have.exact_text('Новости'))
 
-        menu = browser.element('.js-first-level > [href="/contacts/"]').should(be.clickable)
-        hover_wait_and_click_element_simple(menu)
-        assert s('.controls-page-box .h1').should(have.exact_text('Контакты'))
+        with allure.step("Открыть страницу 'Контакты'"):
+            menu = browser.element('.js-first-level > [href="/contacts/"]').should(be.clickable)
+            hover_wait_and_click_element_simple(menu)
+            assert s('.controls-page-box .h1').should(have.exact_text('Контакты'))
 
-    with allure.step("Листаем блоки в разделе 'Клиенты и партнёры' внизу страницы"):
+    with allure.step("ТС2.4. Пролистать блоки в разделе 'Клиенты и партнёры' внизу главной страницы"):
         go_back_main_page()
         leaf_over_bottom_blocks()
 
-        with allure.step("Делаем скриншот"):
+        with allure.step("ТС2.5. Сделать скриншот"):
             allure.attach(browser.driver.get_screenshot_as_png(), name="bottom_blocks", attachment_type=AttachmentType.PNG)
 
     go_back_main_page()
 
-    with allure.step("Пример вложений (attachments): TEXT, HTML, JSON"):
+    with allure.step("Прикрепить к allure-отчёту вложения (attachments): TEXT, HTML, JSON"):
         allure.attach("Text content", name="Text", attachment_type=attachment_type.TEXT)
         allure.attach("<h1>Hello, world</h1>", name="Html", attachment_type=attachment_type.HTML)
         allure.attach(json.dumps({"first": 1, "second": 2}), name="Json", attachment_type=attachment_type.JSON)
 
 
-SLEEP_TIME = 0.0
-SLEEP_TIME2 = 0
+SLEEP_TIME = 0.5
+SLEEP_TIME2 = 1
 
 
 def hover_wait_and_click_element(menu, el_name):
     menu.hover().wait_until(browser.element(el_name).should(be.clickable))
-    time.sleep(SLEEP_TIME)
+    # time.sleep(SLEEP_TIME)
     m = browser.element(el_name)
     m.should(be.clickable)
     m.hover()
     time.sleep(SLEEP_TIME)
     m.click()
-    time.sleep(SLEEP_TIME2)
+    # time.sleep(SLEEP_TIME2)
 
 
 def hover_wait_and_click_element_and_subelement(menu, el_name, sub_name):
     menu.hover().wait_until(browser.element(el_name).should(be.clickable))
-    time.sleep(SLEEP_TIME)
+    # time.sleep(SLEEP_TIME)
     m = browser.element(el_name)
     m.should(be.clickable)
     m.hover()
@@ -119,7 +132,7 @@ def hover_wait_and_click_element_and_subelement(menu, el_name, sub_name):
     m2.hover()
     time.sleep(SLEEP_TIME)
     m2.click()
-    time.sleep(SLEEP_TIME2)
+    # time.sleep(SLEEP_TIME2)
 
 
 def hover_wait_and_click_element_simple(menu):

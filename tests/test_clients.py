@@ -11,13 +11,13 @@ from selene.support.shared.jquery_style import s
 @pytest.mark.demo
 def test_Фильтрация_Клиентов_В_Портфолио():
 
-    with allure.step("Открываем меню Портфолио"):
+    with allure.step("ТС3.1. Открыть страницу Портфолио"):
         browser.open("/clients/")
         assert s('.controls-page-box .h1').should(have.exact_text('Клиенты')) is not None
 
     try:
         # print()
-        with allure.step("Цикл по всем отраслям"):
+        with allure.step("ТС3.2. Цикл по всем отраслям и услугам"):
             otrasli = browser.all('#branchFilter > option')
             for j in range(0, len(otrasli)):
                 dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section')
@@ -45,7 +45,7 @@ def test_Фильтрация_Клиентов_В_Портфолио():
                     # time.sleep(1)
 
     except:
-        with allure.step("Делаем скриншот"):
+        with allure.step("ТС3.3. Сделать скриншот"):
             allure.attach(browser.driver.get_screenshot_as_png(), name="bottom_blocks", attachment_type=AttachmentType.PNG)
         assert False
 

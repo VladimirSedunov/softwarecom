@@ -24,14 +24,18 @@ def test_parametrize(title, fio, email, phone, text, pers_data_agree, is_error, 
 
     allure.dynamic.title(title)
 
-    with allure.step("Открываем страницу Контакты"):
+    with allure.step("ТС5.1. Открыть страницу 'Контакты'"):
         browser.open("/contacts/")
         assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
-    with allure.step("Открываем диалоговое окно Обратная Связь"):
+    with allure.step("ТС5.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
         s('.callback-panel-btn').click()
         s('.c-ico-chat').click()
+
+    with allure.step("ТС5.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
+        assert browser.element('#feedbackForm').element('.h1').should(have.exact_text('Обратная связь'.upper()))
+
         feedback_form.element('[name=fio]').set_value(fio)
         feedback_form.element('[name=email]').set_value(email)
         feedback_form.element('[name=phone]').set_value(phone)
@@ -42,9 +46,10 @@ def test_parametrize(title, fio, email, phone, text, pers_data_agree, is_error, 
         feedback_form.element('[type=submit][name=send]').should(be.clickable).click()
 
     if not is_error:
-        with allure.step(f"Успех: {result_message}"):
+        with allure.step(f"ТС5.4. Получить сообщение ({result_message})"):
+        # with allure.step(f"Успех: {result_message}"):
             s('.msg-wrap').should(have.exact_text(result_message))
     else:
-        with allure.step(f"Сообщение об ошибке: {result_message}"):
+        with allure.step(f"ТС5.4. Получить сообщение ({result_message})"):
             feedback_form.element('.js-error').should(have.exact_text(result_message))
     time.sleep(1)

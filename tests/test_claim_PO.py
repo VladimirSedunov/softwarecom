@@ -20,15 +20,21 @@ def test_claim_form(claim):
     allure.dynamic.title(claim.title)
 
     form_main = Form_Main()
-    form_main.open()
-    form_main.check()
-    form_main.open_claim_form()
 
-    form_claim = Form_Claim()
-    form_claim.fill(claim)
-    form_claim.submit()
+    with allure.step("ТС6.1. Открыть страницу 'Компания'"):
+        form_main.open()
+        form_main.check()
 
-    form_claim.check(claim)
-    with allure.step(f"Сообщение об ошибке: {claim.expected_result_message}"):
-        pass
+    with allure.step("ТС6.2. Открыть диалоговое окно 'Сделать запрос'"):
+        form_main.open_claim_form()
+
+    with allure.step("ТС6.3. Заполнить реквизиты формы"):
+        form_claim = Form_Claim()
+        form_claim.fill(claim)
+        form_claim.submit()
+
+    with allure.step(f"ТС6.4. Получить сообщение ({claim.expected_result_message})"):
+        form_claim.check(claim)
+    # with allure.step(f"Сообщение об ошибке: {claim.expected_result_message}"):
+
     time.sleep(2)
