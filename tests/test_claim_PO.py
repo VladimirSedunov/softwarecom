@@ -2,6 +2,7 @@ import time
 
 import allure
 import pytest
+from selene.support.shared import browser
 
 from tests.test_claim_dir.model.pages.form_claim import Claim, Form_Claim
 from tests.test_claim_dir.model.pages.form_main import Form_Main
