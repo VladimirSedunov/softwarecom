@@ -58,6 +58,7 @@ def test_API(claim_about):
     mess_is_robot = 'Your are robot!'
 
     with allure.step("ТС8.1. Сформировать POST-запрос"):
+
         while is_robot:
             is_robot = False
             cookie = cookies_read_from_file()
@@ -85,18 +86,18 @@ def test_API(claim_about):
                 'Cookie': f'{cookie};'
             }
 
-    with allure.step("ТС8.2. Получить ответ"):
-        response: Response = requests.post(url=url, data=data, headers=headers)
-        real_status_code = response.status_code
-        real_is_err = response.json()[0]
-        real_message = response.json()[1]
-        print()
-        print(response.json())
+            with allure.step("ТС8.2. Получить ответ"):
+                response: Response = requests.post(url=url, data=data, headers=headers)
+                real_status_code = response.status_code
+                real_is_err = response.json()[0]
+                real_message = response.json()[1]
+                print()
+                print(response.json())
 
-        if real_message == mess_is_robot:
-            cookie = cookies_get_from_UI()
-            cookies_write_to_file(cookie)
-            is_robot = True
+                if real_message == mess_is_robot:
+                    cookie = cookies_get_from_UI()
+                    cookies_write_to_file(cookie)
+                    is_robot = True
 
     with allure.step("ТС8.2. Проверить корректность ответа"):
         assert real_status_code == claim_about.status_code
@@ -105,6 +106,7 @@ def test_API(claim_about):
 
 
 def cookies_get_from_UI():
+    print('cookies_get_from_UI')
     browser.open("/about/")
     browser.driver.minimize_window()
     browser.element('.order-btn-popup').click()
