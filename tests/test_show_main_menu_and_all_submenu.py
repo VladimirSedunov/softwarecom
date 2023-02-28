@@ -111,18 +111,18 @@ SLEEP_TIME2 = 1
 
 def hover_wait_and_click_element(menu, el_name):
     menu.hover().wait_until(browser.element(el_name).should(be.clickable))
-    # time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME)
     m = browser.element(el_name)
     m.should(be.clickable)
     m.hover()
     time.sleep(SLEEP_TIME)
     m.click()
-    # time.sleep(SLEEP_TIME2)
+    time.sleep(SLEEP_TIME2)
 
 
 def hover_wait_and_click_element_and_subelement(menu, el_name, sub_name):
     menu.hover().wait_until(browser.element(el_name).should(be.clickable))
-    # time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME)
     m = browser.element(el_name)
     m.should(be.clickable)
     m.hover()
@@ -132,7 +132,7 @@ def hover_wait_and_click_element_and_subelement(menu, el_name, sub_name):
     m2.hover()
     time.sleep(SLEEP_TIME)
     m2.click()
-    # time.sleep(SLEEP_TIME2)
+    time.sleep(SLEEP_TIME2)
 
 
 def hover_wait_and_click_element_simple(menu):

@@ -6,6 +6,8 @@ from selene.support.conditions import have, be
 from selene.support.shared import browser
 from selene.support.shared.jquery_style import s
 
+SLEEP_TIME = 0.5
+
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
@@ -22,12 +24,12 @@ def test_Фильтрация_Клиентов_В_Портфолио():
             for j in range(0, len(otrasli)):
                 dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section')
                 dropdown_otrasl_elem.click()
-                # time.sleep(1)
+                time.sleep(SLEEP_TIME)
                 select_block = browser.all('.ik_select_block')[1].all('.ik_select_option')
                 by_text = select_block[j].locate().text
                 # print(f'Отрасль: {by_text}')
                 select_block[j].element('..').click()
-                # time.sleep(1)
+                time.sleep(SLEEP_TIME)
 
                 uslugi = browser.all('#solutionFilter > option')
                 list_nums = list(range(0, len(uslugi)))
@@ -37,12 +39,12 @@ def test_Фильтрация_Клиентов_В_Портфолио():
                 for j_usluga in list_nums:
                     dropdown_usluga_elem = browser.all('.select-title').element_by(have.exact_text('Услуга')).element('..').element('.select-section')
                     dropdown_usluga_elem.click()
-                    # time.sleep(1)
+                    time.sleep(SLEEP_TIME)
                     select_block_usluga = browser.all('.ik_select_block')[1].all('.ik_select_option')
                     by_text_usluga = select_block_usluga[j_usluga].locate().text
                     # print(f'         Услуга: {by_text_usluga}')
                     select_block_usluga[j_usluga].element('..').click()
-                    # time.sleep(1)
+                    time.sleep(SLEEP_TIME)
 
     except:
         with allure.step("ТС3.3. Сделать скриншот"):

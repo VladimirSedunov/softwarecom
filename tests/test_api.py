@@ -1,5 +1,6 @@
 # https://softwarecom.ru/about/   -   О компании   -   Отправить заявку   -   Сделать запрос
 import os
+# from time import sleep
 
 import allure
 import pytest
@@ -52,10 +53,11 @@ list_claim_about = [
 
 
 @pytest.mark.parametrize("claim_about", list_claim_about)
-def test_API(claim_about):
+def test_API_Отправить_Заявку(claim_about):
     url = "https://softwarecom.ru/ajax/btnorder.php"
     is_robot = True
     mess_is_robot = 'Your are robot!'
+    # sleep(1.1)
 
     with allure.step("ТС8.1. Сформировать POST-запрос"):
 

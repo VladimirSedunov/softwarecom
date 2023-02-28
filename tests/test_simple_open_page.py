@@ -9,11 +9,20 @@ from selene.support.shared import browser
 
 
 @allure.severity(Severity.NORMAL)
-@allure.title('ТС1. Открыть несуществующую страницу')
+@allure.title('ТС1. Проверка основной страницы')
 @pytest.mark.demo
 def test_Проверка_Основной_Страницы():
+
+    mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
     browser.open("/")
+
     with allure.step("ТС1.1. Открыть главную страницу"):
+
+        e = browser.element('#main-message [jsselect="summary"]')
+        if browser.element('#main-message [jsselect="summary"]').locate().text == mess_page_blocked:
+            allure.attach(browser.driver.get_screenshot_as_png(), name="Ошибка на главной странице", attachment_type=AttachmentType.JPG)
+            assert False, mess_page_blocked
+
         assert browser.element('.page .company_about').element('h1').should(
             have.exact_text('Софт Компани — цифровой системный интегратор.'))
         assert browser.driver.current_url == 'https://softwarecom.ru/'
