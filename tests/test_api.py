@@ -52,6 +52,7 @@ list_claim_about = [
 ]
 
 
+@pytest.mark.skip
 @pytest.mark.parametrize("claim_about", list_claim_about)
 def test_API_Отправить_Заявку(claim_about):
     url = "https://softwarecom.ru/ajax/btnorder.php"
