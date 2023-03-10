@@ -2,10 +2,12 @@ import datetime
 import time
 
 import allure
+import dotenv
 import pytest
 from allure_commons.types import Severity, AttachmentType
 from selene.support.conditions import have, be
-from selene.support.shared import browser
+# from selene.support.shared import browser
+
 
 
 @allure.severity(Severity.NORMAL)
@@ -13,12 +15,15 @@ from selene.support.shared import browser
 @pytest.mark.demo
 def test_Проверка_Основной_Страницы(setup_browser):
     browser = setup_browser
-    base_url = "https://softwarecom.ru"
+    base_url = dotenv.base_url
+    print(f'base_url={base_url}')
+    # base_url = "https://softwarecom.ru"
     # browser.config.window_width = 1900
     # browser.config.window_height = 1000
 
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
     browser.open("https://softwarecom.ru")
+    browser.open(f"{base_url}https://softwarecom.ru")
 
     with allure.step("ТС1.1. Открыть главную страницу"):
 
