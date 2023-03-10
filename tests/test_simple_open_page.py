@@ -1,4 +1,5 @@
 import datetime
+import os
 import time
 
 import allure
@@ -15,7 +16,7 @@ from selene.support.conditions import have, be
 @pytest.mark.demo
 def test_Проверка_Основной_Страницы(setup_browser):
     browser = setup_browser
-    base_url = dotenv.base_url
+    base_url = os.getenv('base_url')
     print(f'base_url={base_url}')
     # base_url = "https://softwarecom.ru"
     # browser.config.window_width = 1900
