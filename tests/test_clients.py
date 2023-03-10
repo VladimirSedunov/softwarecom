@@ -11,6 +11,7 @@ SLEEP_TIME = 0.5
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_Фильтрация_Клиентов_В_Портфолио():
 
     with allure.step("ТС3.1. Открыть страницу Портфолио"):

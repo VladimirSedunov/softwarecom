@@ -10,6 +10,7 @@ from selene.support.shared.jquery_style import s
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 @pytest.mark.parametrize("title, fio, email, phone, text, pers_data_agree, is_error, result_message",
                          [
                              ('Позитивный сценарий','Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', True, False,

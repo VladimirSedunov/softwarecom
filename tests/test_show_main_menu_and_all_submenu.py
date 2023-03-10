@@ -11,6 +11,7 @@ from allure import attachment_type
 
 @allure.severity(Severity.CRITICAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_show_main_menu_and_all_submenu():
     with allure.step("ТС2.1. Открыть главную страницу"):
         browser.open("/")

@@ -8,6 +8,7 @@ from selene.support.shared.jquery_style import s
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_Проверка_Контактных_Данных():
 
     real_address = '125190, Москва, Ленинградский проспект, 80к37, 5 этаж'

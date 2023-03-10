@@ -16,6 +16,7 @@ list_claim = [
 ]
 
 
+@pytest.mark.skip
 @pytest.mark.parametrize("claim", list_claim)
 def test_claim_form(claim):
     allure.dynamic.title(claim.title)

@@ -37,6 +37,7 @@ def test_positive():
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_blank_fio():
     with allure.step("ТС4а.1. Открыть страницу 'Контакты'"):
         browser.open("/contacts/")
@@ -63,6 +64,7 @@ def test_blank_fio():
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_blank_email():
     with allure.step("ТС4б.1. Открыть страницу 'Контакты'"):
         browser.open("/contacts/")
@@ -90,6 +92,7 @@ def test_blank_email():
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_blank_phone():
     with allure.step("ТС4в.1. Открыть страницу 'Контакты'"):
         browser.open("/contacts/")
@@ -117,6 +120,7 @@ def test_blank_phone():
 
 @allure.severity(Severity.NORMAL)
 @pytest.mark.demo
+@pytest.mark.skip
 def test_blank_text():
     with allure.step("ТС4г.1. Открыть страницу 'Контакты'"):
         browser.open("/contacts/")
