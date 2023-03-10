@@ -25,10 +25,10 @@ DEFAULT_BROWSER_VERSION = "95.0"
 #     load_dotenv()
 
 
-# @pytest.fixture(scope='function')
-@pytest.fixture(scope='session', autouse=True)
-# def setup_browser(request):
-def setup_browser():
+@pytest.fixture(scope='function')
+# @pytest.fixture(scope='session', autouse=True)
+def setup_browser(request):
+# def setup_browser():
     # browser_version = request.config.getoption('--browser_version')
     # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
     # browser_version = DEFAULT_BROWSER_VERSION
