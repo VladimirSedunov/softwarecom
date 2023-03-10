@@ -22,13 +22,12 @@ def test_Проверка_Основной_Страницы(setup_browser):
 
     with allure.step("ТС1.1. Открыть главную страницу"):
 
-        if len(browser.elements('#main-message [jsselect="summary"]')) > 0:
+        if len(browser.all('#main-message [jsselect="summary"]')) > 0:
             if browser.element('#main-message [jsselect="summary"]').locate().text == mess_page_blocked:
                 allure.attach(browser.driver.get_screenshot_as_png(), name="Ошибка на главной странице", attachment_type=AttachmentType.JPG)
                 assert False, mess_page_blocked
 
-        assert browser.element('.page .company_about').element('h1').should(
-            have.exact_text('Софт Компани — цифровой системный интегратор.'))
+        assert browser.element('.page .company_about').element('h1').should(have.exact_text('Софт Компани — цифровой системный интегратор.'))
         assert browser.driver.current_url == 'https://softwarecom.ru/'
 
         with allure.step("ТС1.2. Сделать скриншот главной страницы'"):
