@@ -49,9 +49,9 @@ def setup_browser(request):
 
     browser = Browser(Config(driver))
 
-    # browser.config.base_url = "https://softwarecom.ru"
-    # browser.config.window_width = 1900
-    # browser.config.window_height = 1000
+    browser.config.base_url = "https://softwarecom.ru"
+    browser.config.window_width = 1900
+    browser.config.window_height = 1000
 
     yield browser
 
