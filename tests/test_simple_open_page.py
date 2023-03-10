@@ -19,7 +19,7 @@ def test_Проверка_Основной_Страницы(setup_browser):
     print(f'base_url={base_url}')
 
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
-    browser.open(f"{base_url}https://softwarecom.ru")
+    browser.open(f"{base_url}/")
 
     with allure.step("ТС1.1. Открыть главную страницу"):
 
