@@ -17,30 +17,23 @@ def pytest_addoption(parser):
     )
 
 
+# создал пустой файл с переменными среды '.env'
+# функция pytest_addoption добавила переменную среды '--browser_version'
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
     load_dotenv()
 
 
-# @pytest.fixture(scope='session', autouse=True)
-# def driver_type(request):
-#     browser_version = request.config.getoption('--browser_version')
-#     yield browser_version
-
-
-# @pytest.fixture(scope='function')
 @pytest.fixture(scope='session', autouse=True)
 def setup_browser(request):
-# def setup_browser():
     browser_version = request.config.getoption('--browser_version')
     print(f'browser_version={browser_version}')
-    # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
-    # browser_version = DEFAULT_BROWSER_VERSION
+    browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
     options = Options()
 
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": "95.0",
+        "browserVersion": browser_version,
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
