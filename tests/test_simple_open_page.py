@@ -13,12 +13,12 @@ from selene.support.shared import browser
 @pytest.mark.demo
 def test_Проверка_Основной_Страницы():
 
-    browser.config.base_url = "https://softwarecom.ru"
-    browser.config.window_width = 1900
-    browser.config.window_height = 1000
+    base_url = "https://softwarecom.ru"
+    # browser.config.window_width = 1900
+    # browser.config.window_height = 1000
 
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
-    browser.open("/")
+    browser.open(f"{base_url}/")
 
     with allure.step("ТС1.1. Открыть главную страницу"):
 
@@ -40,7 +40,7 @@ def test_Проверка_Основной_Страницы():
         assert text_copyright.endswith(str(datetime.date.today().year))
 
     with allure.step("ТС1.4. Открыть несуществующую страницу"):
-        browser.open("/about/err-err-err")
+        browser.open(f"{base_url}/about/err-err-err")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Страница не найдена'))
         assert browser.element('.not-fount-collum-2').should(have.text('Страница которую вы запросили, отсутствует на нашем сайте.'))
         assert browser.element('.not-fount-collum-2 [href="/"]').should(have.exact_text('главной страницей'))
