@@ -1,9 +1,9 @@
 tests/allure_results/
 notifications
 000
-allure-report
-allure-results
-
+allure-report/
+allure-results/
+.idea
 
 
 # Byte-compiled / optimized / DLL files
