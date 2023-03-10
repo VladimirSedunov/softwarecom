@@ -10,14 +10,14 @@ from selene import Browser, Config
 
 from utils import attach
 
-DEFAULT_BROWSER_VERSION = "93.0"
+DEFAULT_BROWSER_VERSION = "95.0"
 
 
-def pytest_addoption(parser):
-    parser.addoption(
-        '--browser_version',
-        default='93.0'
-    )
+# def pytest_addoption(parser):
+#     parser.addoption(
+#         '--browser_version',
+#         default='93.0'
+#     )
 
 
 # @pytest.fixture(scope='session', autouse=True)
@@ -25,38 +25,27 @@ def pytest_addoption(parser):
 #     load_dotenv()
 
 
-# @pytest.fixture(scope='function')
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope='function')
+# @pytest.fixture(scope='session', autouse=True)
 # def setup_browser(request):
-def setup_browser():
-    # browser_version = request.config.getoption('--browser_version')
-    # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
-    # with allure.step("browser_version = DEFAULT_BROWSER_VERSION"):
-    browser_version = DEFAULT_BROWSER_VERSION
+def setup_browser(request):
+    browser_version = request.config.getoption('--browser_version')
+    browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
+    # browser_version = DEFAULT_BROWSER_VERSION
     options = Options()
-
-    print(1)
 
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
-        "browserSize": "1440x900",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
         }
     }
-    print(2)
 
     options.capabilities.update(selenoid_capabilities)
 
-    # login = os.getenv('LOGIN')
-    # password = os.getenv('PASSWORD')
-
-    print(3)
-
     driver = webdriver.Remote(
-        # command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
         command_executor="http://10.155.56.61:4444/wd/hub",
         options=options
     )
@@ -76,6 +65,8 @@ def setup_browser():
     attach.add_logs(browser)
     attach.add_video(browser)
     browser.quit()
+
+
 
 
 # import pytest
