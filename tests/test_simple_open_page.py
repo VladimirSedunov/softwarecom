@@ -4,7 +4,7 @@ import time
 import allure
 import pytest
 from allure_commons.types import Severity, AttachmentType
-from selene.support.conditions import have
+from selene.support.conditions import have, be
 from selene.support.shared import browser
 
 
@@ -18,10 +18,10 @@ def test_Проверка_Основной_Страницы():
 
     with allure.step("ТС1.1. Открыть главную страницу"):
 
-        e = browser.element('#main-message [jsselect="summary"]')
-        if browser.element('#main-message [jsselect="summary"]').locate().text == mess_page_blocked:
-            allure.attach(browser.driver.get_screenshot_as_png(), name="Ошибка на главной странице", attachment_type=AttachmentType.JPG)
-            assert False, mess_page_blocked
+        if len(browser.elements('#main-message [jsselect="summary"]')) > 0:
+            if browser.element('#main-message [jsselect="summary"]').locate().text == mess_page_blocked:
+                allure.attach(browser.driver.get_screenshot_as_png(), name="Ошибка на главной странице", attachment_type=AttachmentType.JPG)
+                assert False, mess_page_blocked
 
         assert browser.element('.page .company_about').element('h1').should(
             have.exact_text('Софт Компани — цифровой системный интегратор.'))
