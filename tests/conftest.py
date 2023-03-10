@@ -25,10 +25,10 @@ DEFAULT_BROWSER_VERSION = "95.0"
 #     load_dotenv()
 
 
-@pytest.fixture(scope='function')
-# @pytest.fixture(scope='session', autouse=True)
+# @pytest.fixture(scope='function')
+@pytest.fixture(scope='session', autouse=True)
 # def setup_browser(request):
-def setup_browser(request):
+def setup_browser():
     # browser_version = request.config.getoption('--browser_version')
     # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
     # browser_version = DEFAULT_BROWSER_VERSION
@@ -50,20 +50,18 @@ def setup_browser(request):
         options=options
     )
 
-    print(4)
-
     browser = Browser(Config(driver))
 
-    browser.config.base_url = "https://softwarecom.ru"
-    browser.config.window_width = 1900
-    browser.config.window_height = 1000
+    # browser.config.base_url = "https://softwarecom.ru"
+    # browser.config.window_width = 1900
+    # browser.config.window_height = 1000
 
     yield browser
 
-    attach.add_html(browser)
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    attach.add_video(browser)
+    # attach.add_html(browser)
+    # attach.add_screenshot(browser)
+    # attach.add_logs(browser)
+    # attach.add_video(browser)
     browser.quit()
 
 

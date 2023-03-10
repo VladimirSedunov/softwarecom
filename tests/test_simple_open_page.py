@@ -11,7 +11,11 @@ from selene.support.shared import browser
 @allure.severity(Severity.NORMAL)
 @allure.title('ТС1. Проверка основной страницы')
 @pytest.mark.demo
-def test_Проверка_Основной_Страницы(setup_browser):
+def test_Проверка_Основной_Страницы():
+
+    browser.config.base_url = "https://softwarecom.ru"
+    browser.config.window_width = 1900
+    browser.config.window_height = 1000
 
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
     browser.open("/")
