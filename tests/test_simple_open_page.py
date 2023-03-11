@@ -1,18 +1,21 @@
 import datetime
+import os
+
 import allure
 from allure_commons.types import Severity, AttachmentType
 from selene.support.conditions import have, be
-from tests.conftest import BASE_URL
 
 
 @allure.severity(Severity.NORMAL)
 @allure.title('ТС1. Проверка основной страницы')
 def test_Проверка_Основной_Страницы(setup_browser):
     browser = setup_browser
-    print(f'base_url={BASE_URL}')
-
+    base_url = os.getenv('BASE_URL')
+    browser.config.base_url = base_url
+    print(777)
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
-    browser.open(f"{BASE_URL}/")
+    # browser.open(f"{base_url}/")
+    browser.open("/")
 
     with allure.step("ТС1.1. Открыть главную страницу"):
 
@@ -33,7 +36,8 @@ def test_Проверка_Основной_Страницы(setup_browser):
         assert text_copyright.endswith(str(datetime.date.today().year))
 
     with allure.step("ТС1.4. Открыть несуществующую страницу"):
-        browser.open(f"{BASE_URL}/about/err-err-err")
+        # browser.open(f"{base_url}/about/err-err-err")
+        browser.open("/about/err-err-err")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Страница не найдена'))
         assert browser.element('.not-fount-collum-2').should(have.text('Страница которую вы запросили, отсутствует на нашем сайте.'))
         assert browser.element('.not-fount-collum-2 [href="/"]').should(have.exact_text('главной страницей'))
