@@ -1,3 +1,4 @@
+import os
 
 import pytest
 from dotenv.main import load_dotenv
@@ -48,6 +49,9 @@ def setup_browser(request):
     )
 
     browser = Browser(Config(driver))
+
+    sss = os.getenv('SSS')
+    print(f'sss={sss}')
 
     yield browser
 
