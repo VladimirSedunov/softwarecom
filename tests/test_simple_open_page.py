@@ -3,14 +3,16 @@ import os
 
 import allure
 from allure_commons.types import Severity, AttachmentType
+from selene.core.entity import Browser
 from selene.support.conditions import have, be
 
 
 @allure.severity(Severity.NORMAL)
 @allure.title('ТС1. Проверка основной страницы')
 def test_Проверка_Основной_Страницы(setup_browser):
-    browser = setup_browser
+    browser : Browser = setup_browser
     base_url = os.getenv('BASE_URL')
+    print(base_url)
     browser.config.base_url = base_url
     print(777)
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
