@@ -103,9 +103,9 @@ def test_show_main_menu_and_all_submenu(setup_browser):
             assert browser.element('.controls-page-box .h1').should(have.exact_text('Отзывы'))
 
         with allure.step("Открыть страницу 'Лицензии'"):
-            pass
-            # hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/certificates/"]')
-            # assert browser.element('.controls-page-box .h1').should(have.exact_text('Лицензии'))
+            # pass
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/certificates/"]')
+            assert browser.element('.controls-page-box .h1').with_(timeout=50).should(have.exact_text('Лицензии'))
 
         with allure.step("Открыть страницу 'Карьера'"):
             hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/career/"]')

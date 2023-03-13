@@ -119,8 +119,8 @@ def test_blank_phone():
 
 
 @allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.skip
+@pytest.mark.jenkins_ok
+# @pytest.mark.skip
 def test_blank_text():
     with allure.step("ТС4г.1. Открыть страницу 'Контакты'"):
         browser.open("/contacts/")
