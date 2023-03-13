@@ -1,26 +1,29 @@
+import os
 import time
 import allure
 import pytest
 from allure_commons.types import Severity, AttachmentType
 from selene.support.conditions import have, be
-from selene.support.shared import browser
-from selene.support.shared.jquery_style import s
+from selene.core.entity import Browser
 
 SLEEP_TIME = 0.5
 
 
 @allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.skip
-def test_Фильтрация_Клиентов_В_Портфолио():
+# @pytest.mark.skip
+@pytest.mark.jenkins_ok
+def test_Фильтрация_Клиентов_В_Портфолио(setup_browser):
+
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС3.1. Открыть страницу Портфолио"):
-        browser.open("/clients/")
-        assert s('.controls-page-box .h1').should(have.exact_text('Клиенты')) is not None
+        browser.open(f"{base_url}/clients/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Клиенты')) is not None
 
     try:
-        # print()
         with allure.step("ТС3.2. Цикл по всем отраслям и услугам"):
+            print('')
             otrasli = browser.all('#branchFilter > option')
             for j in range(0, len(otrasli)):
                 dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section')
@@ -28,7 +31,7 @@ def test_Фильтрация_Клиентов_В_Портфолио():
                 time.sleep(SLEEP_TIME)
                 select_block = browser.all('.ik_select_block')[1].all('.ik_select_option')
                 by_text = select_block[j].locate().text
-                # print(f'Отрасль: {by_text}')
+                print(f'Отрасль: {by_text}')
                 select_block[j].element('..').click()
                 time.sleep(SLEEP_TIME)
 
@@ -43,7 +46,7 @@ def test_Фильтрация_Клиентов_В_Портфолио():
                     time.sleep(SLEEP_TIME)
                     select_block_usluga = browser.all('.ik_select_block')[1].all('.ik_select_option')
                     by_text_usluga = select_block_usluga[j_usluga].locate().text
-                    # print(f'         Услуга: {by_text_usluga}')
+                    print(f'         Услуга: {by_text_usluga}')
                     select_block_usluga[j_usluga].element('..').click()
                     time.sleep(SLEEP_TIME)
 
