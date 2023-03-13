@@ -8,8 +8,8 @@ from selene import command, be, have
 from selene.core.entity import Browser
 from allure import attachment_type
 
-SLEEP_TIME = 0
-SLEEP_TIME2 = 0
+SLEEP_TIME = 0.5
+SLEEP_TIME2 = 1
 
 
 @allure.severity(Severity.CRITICAL)

@@ -1,24 +1,26 @@
+import os
 import time
-
 import allure
 import pytest
 from allure_commons.types import Severity
 from selene.support.conditions import have, be
-from selene.support.shared import browser
-from selene.support.shared.jquery_style import s
+from selene.core.entity import Browser
 
 
 @allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.skip
-def test_positive():
+@pytest.mark.jenkins_ok
+# @pytest.mark.skip
+def test_positive(setup_browser):
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
+
     with allure.step("ТС4.1. Открыть страницу 'Контакты'"):
-        browser.open("/contacts/")
-        assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
+        browser.open(f"{base_url}/contacts/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        s('.callback-panel-btn').click()
-        s('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').click()
+        browser.element('.c-ico-chat').click()
 
     with allure.step("ТС4.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
@@ -32,20 +34,23 @@ def test_positive():
         feedback_form.element('[type=submit][name=send]').should(be.clickable).click()
 
     with allure.step("ТС4.4. Получить сообщение (запрос принят)"):
-        s('.msg-wrap').should(have.exact_text('Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'))
+        browser.element('.msg-wrap').should(have.exact_text('Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'))
 
 
 @allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.skip
-def test_blank_fio():
+@pytest.mark.jenkins_ok
+# @pytest.mark.skip
+def test_blank_fio(setup_browser):
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
+
     with allure.step("ТС4а.1. Открыть страницу 'Контакты'"):
-        browser.open("/contacts/")
-        assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
+        browser.open(f"{base_url}/contacts/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4а.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        s('.callback-panel-btn').click()
-        s('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').click()
+        browser.element('.c-ico-chat').click()
 
     with allure.step("ТС4а.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
@@ -55,7 +60,6 @@ def test_blank_fio():
         feedback_form.element('[name=email]').set_value('this_is@email.mail')
         feedback_form.element('[name=phone]').set_value('Это_телефон')
         feedback_form.element('[name=text]').set_value('Это сообщение')
-        # pers_data_agree = feedback_form.element('.agreeDiv').should(be.clickable).click()
         feedback_form.element('[type=submit][name=send]').should(be.clickable).click()
 
     with allure.step("ТС4а.4. Получить сообщение об ошибке: Укажите Ваше Ф.И.О!"):
@@ -63,16 +67,19 @@ def test_blank_fio():
 
 
 @allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.skip
-def test_blank_email():
+@pytest.mark.jenkins_ok
+# @pytest.mark.skip
+def test_blank_email(setup_browser):
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
+
     with allure.step("ТС4б.1. Открыть страницу 'Контакты'"):
-        browser.open("/contacts/")
-        assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
+        browser.open(f"{base_url}/contacts/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4б.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        s('.callback-panel-btn').click()
-        s('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').click()
+        browser.element('.c-ico-chat').click()
 
     with allure.step("ТС4б.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
@@ -91,16 +98,19 @@ def test_blank_email():
 
 
 @allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.skip
-def test_blank_phone():
+@pytest.mark.jenkins_ok
+# @pytest.mark.skip
+def test_blank_phone(setup_browser):
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
+
     with allure.step("ТС4в.1. Открыть страницу 'Контакты'"):
-        browser.open("/contacts/")
-        assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
+        browser.open(f"{base_url}/contacts/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4в.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        s('.callback-panel-btn').click()
-        s('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').click()
+        browser.element('.c-ico-chat').click()
 
     with allure.step("ТС4в.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
@@ -121,14 +131,17 @@ def test_blank_phone():
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
 # @pytest.mark.skip
-def test_blank_text():
+def test_blank_text(setup_browser):
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
+
     with allure.step("ТС4г.1. Открыть страницу 'Контакты'"):
-        browser.open("/contacts/")
-        assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
+        browser.open(f"{base_url}/contacts/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4г.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        s('.callback-panel-btn').click()
-        s('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').click()
+        browser.element('.c-ico-chat').click()
 
     with allure.step("ТС4г.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
