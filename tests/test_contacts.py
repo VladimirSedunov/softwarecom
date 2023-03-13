@@ -1,26 +1,29 @@
+import os
 import allure
 import pytest
 from allure_commons.types import Severity
 from selene.support.conditions import have, be
-from selene.support.shared import browser
-from selene.support.shared.jquery_style import s
+from selene.core.entity import Browser
 
 
 @allure.severity(Severity.NORMAL)
-@pytest.mark.demo
-@pytest.mark.skip
-def test_Проверка_Контактных_Данных():
+# @pytest.mark.skip
+@pytest.mark.jenkins_ok
+def test_Проверка_Контактных_Данных(setup_browser):
+
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
 
     real_address = '125190, Москва, Ленинградский проспект, 80к37, 5 этаж'
     real_email = 'E-mail: info@softwarecom.ru'
     real_phone = 'Tел. +7 (495) 983-05-48'
 
     with allure.step("ТС7.1. Открыть страницу 'Контакты'"):
-        browser.open("/contacts/")
-        assert s('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
+        browser.open(f"{base_url}/contacts/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС7.2. Проверить наличие блока контактных данных"):
-        contacts = s('.map-contacts--center').should(be.existing)
+        contacts = browser.element('.map-contacts--center').should(be.existing)
         lstr = contacts.locate().text.splitlines()
 
     with allure.step("ТС7.3. Проверить адрес, email и телефон"):

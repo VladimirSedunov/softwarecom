@@ -1,15 +1,10 @@
 import datetime
 import os
-
 import allure
 import pytest
 from allure_commons.types import Severity, AttachmentType
-from dotenv.main import load_dotenv
 from selene.core.entity import Browser
 from selene.support.conditions import have, be
-
-load_dotenv()
-base_url = os.getenv('BASE_URL')
 
 
 @allure.severity(Severity.NORMAL)
@@ -18,6 +13,7 @@ base_url = os.getenv('BASE_URL')
 @pytest.mark.jenkins_ok
 def test_Проверка_Основной_Страницы(setup_browser):
     browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
 
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
     browser.open(f"{base_url}/")

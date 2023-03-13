@@ -3,17 +3,10 @@ import os
 import time
 import allure
 import pytest
-# import pytest
 from allure_commons.types import Severity, AttachmentType
-# from dotenv.main import load_dotenv
 from selene import command, be, have
-# from selene.support.shared import browser
 from selene.core.entity import Browser
 from allure import attachment_type
-
-
-# load_dotenv()
-# base_url = os.getenv('BASE_URL')
 
 SLEEP_TIME = 0.5
 SLEEP_TIME2 = 1
@@ -177,6 +170,6 @@ def test_show_main_menu_and_all_submenu(setup_browser):
     go_back_main_page()
 
     with allure.step("Прикрепить к allure-отчёту вложения (attachments): TEXT, HTML, JSON"):
-        allure.attach("Text content", name="Text", attachment_type=attachment_type.TEXT)
-        allure.attach("<h1>Hello, world</h1>", name="Html", attachment_type=attachment_type.HTML)
-        allure.attach(json.dumps({"first": 1, "second": 2}), name="Json", attachment_type=attachment_type.JSON)
+        allure.attach("Text content: это прикреплённый текст", name="Text", attachment_type=attachment_type.TEXT)
+        allure.attach("<h1>Hello, world</h1><h2>это прикреплённый текст</h2>", name="Html", attachment_type=attachment_type.HTML)
+        allure.attach(json.dumps({"Тест": "ТС2", "Описание": "Проверка работоспособности пунктов и подпунктов главного меню"}), name="Json", attachment_type=attachment_type.JSON)
