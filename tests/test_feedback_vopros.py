@@ -2,7 +2,7 @@ import os
 import time
 import allure
 import pytest
-from allure_commons.types import Severity
+from allure_commons.types import Severity, AttachmentType
 from selene.support.conditions import have, be
 from selene.core.entity import Browser
 
@@ -35,6 +35,7 @@ def test_positive(setup_browser):
 
     with allure.step("ТС4.4. Получить сообщение (запрос принят)"):
         browser.element('.msg-wrap').should(have.exact_text('Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'))
+        allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение (запрос принят)", attachment_type=AttachmentType.JPG)
 
 
 @allure.severity(Severity.NORMAL)
@@ -64,6 +65,7 @@ def test_blank_fio(setup_browser):
 
     with allure.step("ТС4а.4. Получить сообщение об ошибке: Укажите Ваше Ф.И.О!"):
         feedback_form.element('.js-error').should(have.exact_text('Укажите Ваше Ф.И.О!'))
+        allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение об ошибке: Укажите Ваше Ф.И.О!", attachment_type=AttachmentType.JPG)
 
 
 @allure.severity(Severity.NORMAL)
@@ -95,6 +97,7 @@ def test_blank_email(setup_browser):
 
     with allure.step("ТС4б.4. Получить сообщение об ошибке: Укажите правильный e-mail!"):
         feedback_form.element('.js-error').should(have.exact_text('Укажите правильный e-mail!'))
+        allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение об ошибке: Укажите правильный e-mail!", attachment_type=AttachmentType.JPG)
 
 
 @allure.severity(Severity.NORMAL)
@@ -126,6 +129,7 @@ def test_blank_phone(setup_browser):
 
     with allure.step("ТС4б.4. Получить сообщение об ошибке: Укажите Ваш контактный телефон!"):
         feedback_form.element('.js-error').should(have.exact_text('Укажите Ваш контактный телефон!'))
+        allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение об ошибке: Укажите Ваш контактный телефон!", attachment_type=AttachmentType.JPG)
 
 
 @allure.severity(Severity.NORMAL)
@@ -157,3 +161,4 @@ def test_blank_text(setup_browser):
 
     with allure.step("ТС4б.4. Получить сообщение об ошибке: Введите Ваше сообщение!"):
         feedback_form.element('.js-error').should(have.exact_text('Введите Ваше сообщение!'))
+        allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение об ошибке: Введите Ваше сообщение!", attachment_type=AttachmentType.JPG)
