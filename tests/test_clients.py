@@ -9,6 +9,7 @@ from selene.core.entity import Browser
 SLEEP_TIME = 0.5
 
 
+@allure.title('ТС3. Фильтрация клиентов в портфолио')
 @allure.severity(Severity.NORMAL)
 # @pytest.mark.skip
 @pytest.mark.jenkins_ok

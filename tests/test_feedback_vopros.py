@@ -7,6 +7,7 @@ from selene.support.conditions import have, be
 from selene.core.entity import Browser
 
 
+@allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение (запрос принят)')
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
 # @pytest.mark.skip
@@ -38,6 +39,7 @@ def test_positive(setup_browser):
         allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение (запрос принят)", attachment_type=AttachmentType.JPG)
 
 
+@allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение об ошибке: Укажите Ваше Ф.И.О!')
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
 # @pytest.mark.skip
@@ -68,6 +70,7 @@ def test_blank_fio(setup_browser):
         allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение об ошибке: Укажите Ваше Ф.И.О!", attachment_type=AttachmentType.JPG)
 
 
+@allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение об ошибке: Укажите правильный e-mail!')
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
 # @pytest.mark.skip
@@ -100,6 +103,7 @@ def test_blank_email(setup_browser):
         allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение об ошибке: Укажите правильный e-mail!", attachment_type=AttachmentType.JPG)
 
 
+@allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение об ошибке: Укажите Ваш контактный телефон!')
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
 # @pytest.mark.skip
@@ -132,6 +136,7 @@ def test_blank_phone(setup_browser):
         allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение об ошибке: Укажите Ваш контактный телефон!", attachment_type=AttachmentType.JPG)
 
 
+@allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение об ошибке: Введите Ваше сообщение!')
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
 # @pytest.mark.skip

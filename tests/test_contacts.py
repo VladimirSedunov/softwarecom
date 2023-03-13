@@ -6,6 +6,8 @@ from selene.support.conditions import have, be
 from selene.core.entity import Browser
 
 
+
+@allure.title('ТС7. Проверка контактных данных')
 @allure.severity(Severity.NORMAL)
 # @pytest.mark.skip
 @pytest.mark.jenkins_ok

@@ -7,8 +7,8 @@ from selene.core.entity import Browser
 from selene.support.conditions import have, be
 
 
-@allure.severity(Severity.NORMAL)
 @allure.title('ТС1. Проверка основной страницы')
+@allure.severity(Severity.NORMAL)
 # @pytest.mark.skip
 @pytest.mark.jenkins_ok
 def test_Проверка_Основной_Страницы(setup_browser):

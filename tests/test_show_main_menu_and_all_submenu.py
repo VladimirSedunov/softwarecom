@@ -12,8 +12,8 @@ SLEEP_TIME = 0.5
 SLEEP_TIME2 = 1
 
 
-@allure.severity(Severity.CRITICAL)
 @allure.title('ТС2. Проверка работоспособности пунктов и подпунктов главного меню')
+@allure.severity(Severity.CRITICAL)
 # @pytest.mark.skip
 @pytest.mark.jenkins_ok
 def test_show_main_menu_and_all_submenu(setup_browser):
