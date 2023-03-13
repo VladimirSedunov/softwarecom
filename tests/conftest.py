@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
 
-from utils import attach
+# from utils import attach
 
 DEFAULT_BROWSER_VERSION = '95.0'
 # browser.config.window_width = 1900
