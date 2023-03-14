@@ -8,18 +8,44 @@ from allure_commons.types import Severity
 from requests import Response
 from selene.core.entity import Browser
 from selene.support.conditions import be
+from dataclasses import dataclass
 
-from tests.test_api_dir.test_api_class import Claim_about
-# from tests.test_api_dir.test_api_utils import cookies_read_from_file, cookies_write_to_file, cookies_get_from_UI
-# from tests.test_api_dir.test_api_utils import cookies_write_to_file, cookies_get_from_UI
+
+@dataclass
+class Claim_about:
+    fio: str
+    phone: str
+    email: str
+    text: str
+    agree: str
+    ajax: int
+    is_error: bool
+    status_code: int
+    status: str
+    expected_message: str
+
+    def __init__(self, title, fio, phone, email, text, agree, ajax, is_error, status_code, status, expected_message):
+        self.title = title
+        self.fio = fio
+        self.phone = phone
+        self.email = email
+        self.text = text
+        self.agree = agree
+        self.ajax = ajax
+        self.is_error = is_error
+        self.status_code = status_code
+        self.status = status
+        self.expected_message = expected_message
+
 
 list_claim_about = [
-    # Claim_about('Позитивный сценарий', 'Тут Пишем ФИО', 'Это_телефон', 'this_is@email.mail', 'Это сообщение', "Y", 1, False, 200, 'success', 'Ваш запрос отправлен менеджеру!'),
-    # Claim_about('Нет ФИО', '', 'Это_телефон', 'this_is@email.mail', 'Это сообщение', "Y", 1, True, 200, 'error', 'Укажите Ваше Ф.И.О!'),
-    # Claim_about('Нет телефона', 'Тут Пишем ФИО', '', 'this_is@email.mail', 'Это сообщение', "Y", 1, True, 200, 'error', 'Укажите Ваш контактный телефон!'),
+    Claim_about('Позитивный сценарий', 'Тут Пишем ФИО', 'Это_телефон', 'this_is@email.mail', 'Это сообщение', "Y", 1, False, 200, 'success', 'Ваш запрос отправлен менеджеру!'),
+    Claim_about('Нет ФИО', '', 'Это_телефон', 'this_is@email.mail', 'Это сообщение', "Y", 1, True, 200, 'error', 'Укажите Ваше Ф.И.О!'),
+    Claim_about('Нет телефона', 'Тут Пишем ФИО', '', 'this_is@email.mail', 'Это сообщение', "Y", 1, True, 200, 'error', 'Укажите Ваш контактный телефон!'),
     Claim_about('Нет email', 'Тут Пишем ФИО', 'Это_телефон', '', 'Это сообщение', "Y", 1, True, 200, 'error', 'Укажите правильный e-mail!'),
     Claim_about('Нет сообщения', 'Тут Пишем ФИО', 'Это_телефон', 'this_is@email.mail', '', "Y", 1, True, 200, 'error', 'Введите Ваше сообщение!')
 ]
+
 
 @allure.title('ТС8. Тест API: Отправка заявки со страницы "Компания"')
 @allure.severity(Severity.NORMAL)
@@ -85,19 +111,12 @@ def test_API_Отправить_Заявку(setup_browser, claim_about):
 
 
 def cookies_read_from_file(fname):
-    # годится для Linux и для Windows одновременно
-    # dir_down = str(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests', 'resources')))
-    # fname = os.path.join(dir_down, "test_api_cookies.txt")
     with open(fname, 'r') as f:
         q = f.read()
     return q
 
 
-
 def cookies_write_to_file(cookie, fname):
-    # годится для Linux и для Windows одновременно
-    # dir_down = str(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests', 'resources')))
-    # fname = os.path.join(dir_down, "test_api_cookies.txt")
     with open(fname, 'w') as f:
         f.write(cookie)
 
@@ -108,16 +127,12 @@ def cookies_get_from_UI(browser, base_url):
     browser.driver.minimize_window()
     browser.element('.order-btn-popup').click()
 
-    print(13)
-
     order_form = browser.element('#orderForm')
     order_form.element('[name=fio]').set_value('Тут Пишем ФИО')
     order_form.element('[name=phone]').set_value('7 903 937 33 33')
     order_form.element('[name=email]').set_value('this_is@email.mail')
     order_form.element('[name=text]').set_value('Это сообщение')
     order_form.element('[type=submit][name=send]').should(be.clickable).click()
-
-    print(14)
 
     # Return The List of all Cookies
     cookie = ''
@@ -128,6 +143,8 @@ def cookies_get_from_UI(browser, base_url):
             value = s.get('value')
             cookie = f'{name}={value}'
 
-    print(15)
-
     return cookie
+
+
+
+
