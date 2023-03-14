@@ -4,6 +4,7 @@ import os
 import allure
 import pytest
 import requests
+from allure_commons.types import Severity
 from requests import Response
 from selene.core.entity import Browser
 from selene.support.conditions import be
@@ -20,8 +21,10 @@ list_claim_about = [
     Claim_about('Нет сообщения', 'Тут Пишем ФИО', 'Это_телефон', 'this_is@email.mail', '', "Y", 1, True, 200, 'error', 'Введите Ваше сообщение!'),
 ]
 
-
+@allure.title('ТС8. Тест API: Отправка заявки со страницы "Компания"')
+@allure.severity(Severity.NORMAL)
 # @pytest.mark.skip
+@pytest.mark.jenkins_ok
 @pytest.mark.parametrize("claim_about", list_claim_about)
 def test_API_Отправить_Заявку(setup_browser, claim_about):
     browser: Browser = setup_browser
