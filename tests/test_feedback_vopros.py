@@ -25,7 +25,7 @@ def test_positive(setup_browser):
 
     with allure.step("ТС4.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
-        assert browser.element('#feedbackForm').element('.h1').should(have.exact_text('Обратная связь'.upper()))
+        assert browser.element('#feedbackForm').with_(timeout=15.0).element('.h1').with_(timeout=15.0).should(have.exact_text('Обратная связь'.upper()))
 
         feedback_form.element('[name=fio]').set_value('Тут Пишем ФИО')
         feedback_form.element('[name=email]').set_value('this_is@email.mail')
@@ -57,7 +57,7 @@ def test_blank_fio(setup_browser):
 
     with allure.step("ТС4а.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
-        assert browser.element('#feedbackForm').element('.h1').should(have.exact_text('Обратная связь'.upper()))
+        assert browser.element('#feedbackForm').with_(timeout=15.0).element('.h1').with_(timeout=15.0).should(have.exact_text('Обратная связь'.upper()))
 
         feedback_form.element('[name=fio]').set_value('')
         feedback_form.element('[name=email]').set_value('this_is@email.mail')
@@ -88,7 +88,7 @@ def test_blank_email(setup_browser):
 
     with allure.step("ТС4б.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
-        assert browser.element('#feedbackForm').element('.h1').should(have.exact_text('Обратная связь'.upper()))
+        assert browser.element('#feedbackForm').with_(timeout=15.0).element('.h1').with_(timeout=15.0).should(have.exact_text('Обратная связь'.upper()))
 
         feedback_form.element('[name=fio]').set_value('Тут Пишем ФИО')
         feedback_form.element('[name=email]').set_value('')
@@ -121,7 +121,7 @@ def test_blank_phone(setup_browser):
 
     with allure.step("ТС4в.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
-        assert browser.element('#feedbackForm').element('.h1').should(have.exact_text('Обратная связь'.upper()))
+        assert browser.element('#feedbackForm').with_(timeout=15.0).element('.h1').with_(timeout=15.0).should(have.exact_text('Обратная связь'.upper()))
 
         feedback_form.element('[name=fio]').set_value('Тут Пишем ФИО')
         feedback_form.element('[name=email]').set_value('this_is@email.mail')
@@ -154,7 +154,7 @@ def test_blank_text(setup_browser):
 
     with allure.step("ТС4г.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
-        assert browser.element('#feedbackForm').element('.h1').should(have.exact_text('Обратная связь'.upper()))
+        assert browser.element('#feedbackForm').with_(timeout=15.0).element('.h1').with_(timeout=15.0).should(have.exact_text('Обратная связь'.upper()))
 
         feedback_form.element('[name=fio]').set_value('Тут Пишем ФИО')
         feedback_form.element('[name=email]').set_value('this_is@email.mail')
