@@ -4,7 +4,8 @@
 
 # pytest tests/test_contacts.py --alluredir=allure-results
 # allure.bat serve allure-results
-
+# pytest tests -m jenkins_ok --collect-only
+# pytest tests -m jenkins_ok                                запуск всех тестов
 
 # =========================================================
 # создать отчёт в заданной директории (allure-report + widgets + summary.json) :

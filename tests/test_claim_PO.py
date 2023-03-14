@@ -2,8 +2,11 @@ import os
 import time
 import allure
 import pytest
-from tests.test_claim_dir.model.pages.form_claim import Claim, Form_Claim
-from tests.test_claim_dir.model.pages.form_main import Form_Main
+
+# from test_claim_dir.data.claim_data import Claim
+from test_claim_dir.model.pages.form_claim import Form_Claim, Claim
+from test_claim_dir.model.pages.form_main import Form_Main
+
 
 SLEEP_TIME = 1.0
 
