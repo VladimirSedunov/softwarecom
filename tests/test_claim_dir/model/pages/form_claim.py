@@ -1,8 +1,5 @@
 from dataclasses import dataclass
-
-import allure
 from selene.support.conditions import have, be
-from selene.support.shared import browser
 from tests.test_claim_dir.data.claim_data import Claim
 
 
@@ -26,7 +23,7 @@ class Form_Claim:
         self.text = ''
         self.pers_data_agree = True
 
-    def fill(self, claim: Claim):
+    def fill(self, claim: Claim, browser):
         feedback_form = browser.element(self.orderForm_CSS)
         feedback_form.element('[name=fio]').set_value(claim.fio)
         feedback_form.element('[name=phone]').set_value(claim.phone)
@@ -35,11 +32,10 @@ class Form_Claim:
         if claim.pers_data_agree != len(feedback_form.all('.agreeDiv.selected').should(be.existing)) > 0:
             feedback_form.element('.agreeDiv').should(be.clickable).click()
 
-
-    def submit(self):
+    def submit(self, browser):
         browser.element(self.orderForm_CSS).element('[type=submit][name=send]').should(be.clickable).click()
 
-    def check(self, claim: Claim):
+    def check(self, claim: Claim, browser):
         if not claim.is_error:
             browser.element('.msg-wrap').should(have.exact_text(claim.expected_result_message))
         else:
