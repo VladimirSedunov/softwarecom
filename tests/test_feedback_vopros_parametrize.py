@@ -24,7 +24,7 @@ def test_parametrize(setup_browser, title, fio, email, phone, text, pers_data_ag
     browser = setup_browser
     base_url = os.getenv('BASE_URL')
 
-    allure.dynamic.title(title)
+    allure.dynamic.title('ТС5. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" (Параметризованный тест). ' + title)
 
     with allure.step("ТС5.1. Открыть страницу 'Контакты'"):
         browser.open(f"{base_url}/contacts/")
