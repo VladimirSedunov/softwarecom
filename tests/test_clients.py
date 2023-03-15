@@ -27,7 +27,7 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
             print('')
             otrasli = browser.all('#branchFilter > option')
             for j in range(0, len(otrasli)):
-                dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section')
+                dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section').should(be.clickable)
                 dropdown_otrasl_elem.click()
                 time.sleep(SLEEP_TIME)
 
@@ -43,12 +43,15 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
                 list_nums = list(range(0, len(uslugi)))
                 list_nums.append(0)
                 list_nums.pop(0)
-                # print(list_nums)
+                print(list_nums)
                 for j_usluga in list_nums:
-                    dropdown_usluga_elem = browser.all('.select-title').element_by(have.exact_text('Услуга')).element('..').element('.select-section')
+                    dropdown_usluga_elem = browser.all('.select-title').element_by(have.exact_text('Услуга')).element('..').element('.select-section').should(be.clickable)
                     dropdown_usluga_elem.click()
                     time.sleep(SLEEP_TIME)
+
+
                     select_block_usluga = browser.all('.ik_select_block')[1].all('.ik_select_option')
+
                     by_text_usluga = select_block_usluga[j_usluga].locate().text
 
                     print(f'         Услуга: {by_text_usluga.ljust(30)}      {str(len(browser.all(".client-item"))).rjust(5)}')
