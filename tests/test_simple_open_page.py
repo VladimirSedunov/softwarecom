@@ -4,9 +4,9 @@ import allure
 import pytest
 from allure_commons.types import Severity, AttachmentType
 from selene.core.entity import Browser
-from selene.support.conditions import have, be
+from selene.support.conditions import have
 
-from utils.attach import add_logs
+from tests.utils.attach import add_logs
 
 
 @allure.title('ТС1. Проверка основной страницы')
