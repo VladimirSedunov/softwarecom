@@ -25,7 +25,8 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
     try:
         with allure.step("ТС3.2. Цикл по всем отраслям и услугам"):
             print('')
-            otrasli = browser.all('#branchFilter > option').with_(timeout=9.0).wait_until(have.size_greater_than_or_equal(1))
+            browser.all('#branchFilter > option').with_(timeout=9.0).wait_until(have.size_greater_than_or_equal(1))
+            otrasli = browser.all('#branchFilter > option')
             assert len(otrasli) > 0
 
             for j in range(0, len(otrasli)):
