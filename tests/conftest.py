@@ -1,3 +1,4 @@
+import allure
 import pytest
 from dotenv.main import load_dotenv
 from selenium import webdriver
@@ -32,6 +33,7 @@ def setup_browser(request):
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
+        "browserSize": "1800x900",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
@@ -52,6 +54,7 @@ def setup_browser(request):
     # attach.add_html(browser)
     # attach.add_screenshot(browser)
     # attach.add_logs(browser)
-    attach.add_video(browser)
+    with allure.step("ТС1.6. Прикрепить видеозапись теста"):
+        attach.add_video(browser)
     browser.quit()
 

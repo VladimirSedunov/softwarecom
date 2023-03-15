@@ -103,12 +103,12 @@ def test_show_main_menu_and_all_submenu(setup_browser):
         go_back_main_page(browser)
         leaf_over_bottom_blocks(browser)
 
-        with allure.step("ТС2.5. Сделать скриншот"):
+        with allure.step("ТС2.4.1. Сделать скриншот"):
             allure.attach(browser.driver.get_screenshot_as_png(), name="bottom_blocks", attachment_type=AttachmentType.PNG)
 
     go_back_main_page(browser)
 
-    with allure.step("Прикрепить к allure-отчёту вложения (attachments): TEXT, HTML, JSON"):
+    with allure.step("ТС2.5. Прикрепить к allure-отчёту вложения (attachments): TEXT, HTML, JSON"):
         allure.attach("Text content: это прикреплённый текст", name="Text", attachment_type=attachment_type.TEXT)
         allure.attach("<h1>Hello, world</h1><h2>это прикреплённый текст</h2>", name="Html", attachment_type=attachment_type.HTML)
         allure.attach(json.dumps({"Тест": "ТС2", "Описание": "Проверка работоспособности пунктов и подпунктов главного меню"}), name="Json",
