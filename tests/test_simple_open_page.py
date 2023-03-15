@@ -6,6 +6,8 @@ from allure_commons.types import Severity, AttachmentType
 from selene.core.entity import Browser
 from selene.support.conditions import have, be
 
+from utils.attach import add_logs
+
 
 @allure.title('ТС1. Проверка основной страницы')
 @allure.severity(Severity.NORMAL)
@@ -44,3 +46,6 @@ def test_Проверка_Основной_Страницы(setup_browser):
 
         with allure.step("ТС1.5. Сделать скриншот появившейся страницы"):
             allure.attach(browser.driver.get_screenshot_as_png(), name="Страница_не_найдена", attachment_type=AttachmentType.JPG)
+
+    with allure.step("ТС1.5. Прикрепить лог браузера"):
+        add_logs(browser)
