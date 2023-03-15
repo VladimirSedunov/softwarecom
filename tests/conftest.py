@@ -8,6 +8,8 @@ from selene import Browser, Config
 from tests.utils import attach
 
 DEFAULT_BROWSER_VERSION = '95.0'
+
+
 # browser.config.window_width = 1900
 # browser.config.window_height = 1000
 
@@ -33,7 +35,6 @@ def setup_browser(request):
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
-        "browserSize": "1800x900",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
@@ -48,13 +49,14 @@ def setup_browser(request):
     )
 
     browser = Browser(Config(driver))
+    browser.config.window_width = 1800
+    browser.config.window_height = 900
 
     yield browser
 
     # attach.add_html(browser)
     # attach.add_screenshot(browser)
     # attach.add_logs(browser)
-    with allure.step("ТС1.6. Прикрепить видеозапись теста"):
+    with allure.step("Видеозапись теста"):
         attach.add_video(browser)
     browser.quit()
-
