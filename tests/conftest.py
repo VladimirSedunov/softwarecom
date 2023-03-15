@@ -15,7 +15,7 @@ DEFAULT_BROWSER_VERSION = '95.0'
 
 def pytest_addoption(parser):
     parser.addoption('--browser_version', default='95.0')
-    parser.addoption('--window-size', default='1920,1080')
+    # parser.addoption('--window-size', default='1920,1080')
 
 
 # создал пустой файл с переменными среды '.env'

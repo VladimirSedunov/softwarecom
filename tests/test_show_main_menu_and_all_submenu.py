@@ -12,7 +12,7 @@ SLEEP_TIME = 0.5
 SLEEP_TIME2 = 1
 
 SLEEP_TIME11 = 0.1
-SLEEP_TIME12 = 0.1
+SLEEP_TIME12 = 1.1
 
 
 @allure.title('ТС2. Проверка работоспособности пунктов и подпунктов главного меню')
@@ -46,8 +46,8 @@ def test_show_main_menu_and_all_submenu(setup_browser):
         with allure.step("Открыть страницу 'Лицензии'   - С лицензиями проблема"):
             print('С лицензиями проблема')
 
-            # hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/certificates/"]')
-            # assert browser.element('.controls-page-box .h1').should(have.exact_text('Лицензии'))
+            hover_wait_and_click_element(menu, f'{elem_name} > [href="/about/certificates/"]')
+            assert browser.element('.controls-page-box .h1').should(have.exact_text('Лицензии'))
 
         with allure.step("Открыть страницу 'Карьера'"):
             hover_wait_and_click_element(browser, menu, f'{elem_name} > [href="/about/career/"]')
