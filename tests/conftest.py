@@ -59,6 +59,8 @@ def setup_browser(request):
     # attach.add_html(browser)
     # attach.add_screenshot(browser)
     # attach.add_logs(browser)
-    with allure.step("Видеозапись теста"):
-        attach.add_video(browser)
+
+    # with allure.step("Видеозапись теста"):
+    #     attach.add_video(browser)
+
     browser.quit()
