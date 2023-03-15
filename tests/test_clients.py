@@ -47,8 +47,11 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
                 browser.all('.ik_select_block').with_(timeout=9.0).wait_until(have.size_greater_than_or_equal(1))
                 print(9)
 
-                # select_block = browser.all('.ik_select_block')[1].all('.ik_select_option')
-                select_block = browser.all('.ik_select_block .ik_select_option')
+                select_block = browser.all('.ik_select_block')[1].all('.ik_select_option')
+                print('----------------------------------------')
+                print(f'select_block = {select_block}')
+                print('----------------------------------------')
+
                 print(10)
                 print(f'j={j}')
                 time.sleep(10)
