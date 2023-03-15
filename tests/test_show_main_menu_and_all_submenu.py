@@ -11,6 +11,9 @@ from allure import attachment_type
 SLEEP_TIME = 0.5
 SLEEP_TIME2 = 1
 
+SLEEP_TIME11 = 0.1
+SLEEP_TIME12 = 0.1
+
 
 @allure.title('ТС2. Проверка работоспособности пунктов и подпунктов главного меню')
 @allure.severity(Severity.CRITICAL)
@@ -131,29 +134,29 @@ def go_throw_main_menu(browser):
 
 def hover_wait_and_click_element(browser, menu, el_name):
     menu.hover().wait_until(browser.element(el_name).should(be.clickable))
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME11)
     m = browser.element(el_name)
     m.should(be.clickable)
     m.hover()
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME11)
     m.click()
     # m.with_(timeout=30.0).click()
-    time.sleep(SLEEP_TIME2)
+    time.sleep(SLEEP_TIME12)
 
 
 def hover_wait_and_click_element_and_subelement(browser, menu, el_name, sub_name):
     menu.hover().wait_until(browser.element(el_name).should(be.clickable))
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME11)
     m = browser.element(el_name)
     m.should(be.clickable)
     m.hover()
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME11)
     m2 = browser.element(sub_name)
     m2.should(be.clickable)
     m2.hover()
-    time.sleep(SLEEP_TIME)
+    time.sleep(SLEEP_TIME11)
     m2.click()
-    time.sleep(SLEEP_TIME2)
+    time.sleep(SLEEP_TIME12)
 
 
 def hover_wait_and_click_element_simple(menu):

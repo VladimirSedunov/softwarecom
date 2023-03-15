@@ -9,13 +9,13 @@ from tests.utils import attach
 
 DEFAULT_BROWSER_VERSION = '95.0'
 
-
 # browser.config.window_width = 1900
 # browser.config.window_height = 1000
 
 
 def pytest_addoption(parser):
     parser.addoption('--browser_version', default='95.0')
+    parser.addoption('--window-size', default='1920,1080')
 
 
 # создал пустой файл с переменными среды '.env'
@@ -35,6 +35,7 @@ def setup_browser(request):
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
+        "videoScreenSize": "1024x768",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
