@@ -48,7 +48,7 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
                     select_block_usluga = browser.all('.ik_select_block')[1].all('.ik_select_option')
                     by_text_usluga = select_block_usluga[j_usluga].locate().text
 
-                    print(f'         Услуга: {by_text_usluga.ljust(30)}      {len(browser.all(".client-item"))}')
+                    print(f'         Услуга: {by_text_usluga.ljust(30)}      {str(len(browser.all(".client-item"))).rjust(5)}')
 
                     select_block_usluga[j_usluga].element('..').click()
                     time.sleep(SLEEP_TIME)
