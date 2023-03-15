@@ -9,37 +9,38 @@ from selene.core.entity import Browser
 SLEEP_TIME = 9.0
 SLEEP_TIME2 = 2.0
 
-# @allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение (запрос принят)')
-# @allure.severity(Severity.NORMAL)
-# @pytest.mark.jenkins_ok
-# # @pytest.mark.skip
-# def test_positive(setup_browser):
-#     browser: Browser = setup_browser
-#     base_url = os.getenv('BASE_URL')
-#
-#     with allure.step("ТС4.1. Открыть страницу 'Контакты'"):
-#         browser.open(f"{base_url}/contacts/")
-#         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
-#
-#     with allure.step("ТС4.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-#         browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
-#         browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
-#
-#     with allure.step("ТС4.3. Заполнить реквизиты формы"):
-#         browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
-#         feedback_form = browser.element('#feedbackForm')
-#         assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
-#
-#         feedback_form.element('[name=fio]').set_value('Тут Пишем ФИО')
-#         feedback_form.element('[name=email]').set_value('this_is@email.mail')
-#         feedback_form.element('[name=phone]').set_value('Это_телефон')
-#         feedback_form.element('[name=text]').set_value('Это сообщение')
-#         time.sleep(SLEEP_TIME2)
-#         feedback_form.element('[type=submit][name=send]').should(be.clickable).click()
-#
-#     with allure.step("ТС4.4. Получить сообщение (запрос принят)"):
-#         browser.element('.msg-wrap').with_(timeout=SLEEP_TIME).should(have.exact_text('Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'))
-#         allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение (запрос принят)", attachment_type=AttachmentType.JPG)
+
+@allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение (запрос принят)')
+@allure.severity(Severity.NORMAL)
+@pytest.mark.jenkins_ok
+# @pytest.mark.skip
+def test_positive(setup_browser):
+    browser: Browser = setup_browser
+    base_url = os.getenv('BASE_URL')
+
+    with allure.step("ТС4.1. Открыть страницу 'Контакты'"):
+        browser.open(f"{base_url}/contacts/")
+        assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
+
+    with allure.step("ТС4.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
+        browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
+
+    with allure.step("ТС4.3. Заполнить реквизиты формы"):
+        browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
+        feedback_form = browser.element('#feedbackForm')
+        assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
+
+        feedback_form.element('[name=fio]').set_value('Тут Пишем ФИО')
+        feedback_form.element('[name=email]').set_value('this_is@email.mail')
+        feedback_form.element('[name=phone]').set_value('Это_телефон')
+        feedback_form.element('[name=text]').set_value('Это сообщение')
+        time.sleep(SLEEP_TIME2)
+        feedback_form.element('[type=submit][name=send]').should(be.clickable).click()
+
+    with allure.step("ТС4.4. Получить сообщение (запрос принят)"):
+        browser.element('.msg-wrap').with_(timeout=SLEEP_TIME).should(have.exact_text('Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'))
+        allure.attach(browser.driver.get_screenshot_as_png(), name="Сообщение (запрос принят)", attachment_type=AttachmentType.JPG)
 
 
 @allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение об ошибке: Укажите Ваше Ф.И.О!')
