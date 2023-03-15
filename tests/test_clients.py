@@ -54,7 +54,7 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
 
                 print(10)
                 print(f'j={j}')
-                time.sleep(10)
+                time.sleep(1)
                 by_text = select_block[j].locate().text
                 print(11)
                 print(f'Отрасль: {by_text}')
