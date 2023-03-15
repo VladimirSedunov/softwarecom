@@ -32,6 +32,7 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
             otrasli = browser.all('#branchFilter > option')
             print(4)
             assert len(otrasli) > 0
+            print(f'len(otrasli)={len(otrasli)}')
             print(5)
 
             for j in range(0, len(otrasli)):
@@ -45,9 +46,11 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
 
                 browser.all('.ik_select_block').with_(timeout=9.0).wait_until(have.size_greater_than_or_equal(1))
                 print(9)
+                time.sleep(10)
 
                 select_block = browser.all('.ik_select_block')[1].all('.ik_select_option')
                 print(10)
+                print(f'j={j}')
                 by_text = select_block[j].locate().text
                 print(11)
                 print(f'Отрасль: {by_text}')
