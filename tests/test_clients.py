@@ -25,7 +25,9 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
     try:
         with allure.step("ТС3.2. Цикл по всем отраслям и услугам"):
             print('')
-            otrasli = browser.all('#branchFilter > option')
+            otrasli = browser.all('#branchFilter > option').with_(timeout=9.0).wait_until(have.size_greater_than_or_equal(1))
+            assert len(otrasli) > 0
+
             for j in range(0, len(otrasli)):
                 dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section').should(be.clickable)
                 dropdown_otrasl_elem.click()
