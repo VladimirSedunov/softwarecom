@@ -35,7 +35,10 @@ def setup_browser(request):
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
-        "videoScreenSize": "1024x768",
+        # "browserSize": "1920x1080",
+        # "videoScreenSize": "1920x1080",
+        # "screenResolution": "1280x1024x24",
+        # "windowSize": "1280,1024",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
