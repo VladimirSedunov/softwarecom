@@ -6,7 +6,7 @@ from allure_commons.types import Severity, AttachmentType
 from selene.core.entity import Browser
 from selene.support.conditions import have
 
-from tests.utils.attach import add_logs
+from tests.utils.attach import add_logs, add_video
 
 
 @allure.title('ТС1. Проверка основной страницы')
@@ -49,3 +49,6 @@ def test_Проверка_Основной_Страницы(setup_browser):
 
     with allure.step("ТС1.5. Прикрепить лог браузера"):
         add_logs(browser)
+
+    with allure.step("ТС1.6. Прикрепить видеозапись теста"):
+        add_video(browser)
