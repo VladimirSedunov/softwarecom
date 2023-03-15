@@ -22,10 +22,11 @@ SLEEP_TIME2 = 2.0
 #         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 #
 #     with allure.step("ТС4.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-#         browser.element('.callback-panel-btn').click()
-#         browser.element('.c-ico-chat').click()
+#         browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+#         browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
 #
 #     with allure.step("ТС4.3. Заполнить реквизиты формы"):
+#         browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
 #         feedback_form = browser.element('#feedbackForm')
 #         assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
 #
@@ -54,10 +55,11 @@ def test_blank_fio(setup_browser):
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4а.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        browser.element('.callback-panel-btn').click()
-        browser.element('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
 
     with allure.step("ТС4а.3. Заполнить реквизиты формы"):
+        browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
         feedback_form = browser.element('#feedbackForm')
         assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
 
@@ -86,10 +88,11 @@ def test_blank_email(setup_browser):
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4б.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        browser.element('.callback-panel-btn').click()
-        browser.element('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
 
     with allure.step("ТС4б.3. Заполнить реквизиты формы"):
+        browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
         feedback_form = browser.element('#feedbackForm')
         assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
 
@@ -118,10 +121,11 @@ def test_blank_phone(setup_browser):
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4в.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        browser.element('.callback-panel-btn').click()
-        browser.element('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
 
     with allure.step("ТС4в.3. Заполнить реквизиты формы"):
+        browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
         feedback_form = browser.element('#feedbackForm')
         assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
 
@@ -150,10 +154,11 @@ def test_blank_text(setup_browser):
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4г.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        browser.element('.callback-panel-btn').click()
-        browser.element('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
 
     with allure.step("ТС4г.3. Заполнить реквизиты формы"):
+        browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
         feedback_form = browser.element('#feedbackForm')
         assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
 
