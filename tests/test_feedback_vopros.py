@@ -23,7 +23,7 @@ SLEEP_TIME2 = 2.0
 #
 #     with allure.step("ТС4.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
 #         browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
-#         browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
+#         browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 #
 #     with allure.step("ТС4.3. Заполнить реквизиты формы"):
 #         browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
@@ -56,7 +56,7 @@ def test_blank_fio(setup_browser):
 
     with allure.step("ТС4а.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
         browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
-        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 
     with allure.step("ТС4а.3. Заполнить реквизиты формы"):
         browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
@@ -89,7 +89,7 @@ def test_blank_email(setup_browser):
 
     with allure.step("ТС4б.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
         browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
-        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 
     with allure.step("ТС4б.3. Заполнить реквизиты формы"):
         browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
@@ -122,7 +122,7 @@ def test_blank_phone(setup_browser):
 
     with allure.step("ТС4в.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
         browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
-        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 
     with allure.step("ТС4в.3. Заполнить реквизиты формы"):
         browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
@@ -155,7 +155,7 @@ def test_blank_text(setup_browser):
 
     with allure.step("ТС4г.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
         browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
-        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 
     with allure.step("ТС4г.3. Заполнить реквизиты формы"):
         browser.element('#feedbackForm').with_(timeout=SLEEP_TIME)
