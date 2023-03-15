@@ -6,6 +6,7 @@ from allure_commons.types import Severity
 from selene.support.conditions import have, be
 
 SLEEP_TIME = 9.0
+SLEEP_TIME2 = 2.0
 
 testdata = [
     ('Позитивный сценарий', 'Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', True, False,
@@ -33,8 +34,8 @@ def test_parametrize(setup_browser, title, fio, email, phone, text, pers_data_ag
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС5.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        browser.element('.callback-panel-btn').click()
-        browser.element('.c-ico-chat').click()
+        browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+        browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 
     with allure.step("ТС5.3. Заполнить реквизиты формы"):
         feedback_form = browser.element('#feedbackForm')
@@ -46,7 +47,7 @@ def test_parametrize(setup_browser, title, fio, email, phone, text, pers_data_ag
         feedback_form.element('[name=text]').set_value(text)
         if pers_data_agree != len(feedback_form.all('.agreeDiv.selected').should(be.existing)) > 0:
             feedback_form.element('.agreeDiv').should(be.clickable).click()
-        # time.sleep(1)
+        time.sleep(SLEEP_TIME2)
         feedback_form.element('[type=submit][name=send]').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 
     if not is_error:
@@ -55,4 +56,4 @@ def test_parametrize(setup_browser, title, fio, email, phone, text, pers_data_ag
     else:
         with allure.step(f"ТС5.4. Получить сообщение ({result_message})"):
             feedback_form.element('.js-error').with_(timeout=SLEEP_TIME).should(have.exact_text(result_message))
-    time.sleep(0.5)
+    time.sleep(SLEEP_TIME2)
