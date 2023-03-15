@@ -34,11 +34,11 @@ def test_parametrize(setup_browser, title, fio, email, phone, text, pers_data_ag
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС5.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
-        browser.element('.callback-panel-btn').with_(timeout=SLEEP_TIME).click()
+        browser.element('.callback-panel-btn').should(be.clickable).click()
         browser.element('.c-ico-chat').with_(timeout=SLEEP_TIME).should(be.clickable).click()
 
     with allure.step("ТС5.3. Заполнить реквизиты формы"):
-        feedback_form = browser.element('#feedbackForm')
+        feedback_form = browser.element('#feedbackForm').should(be.enabled)
         assert browser.element('#feedbackForm').with_(timeout=SLEEP_TIME).element('.h1').with_(timeout=SLEEP_TIME).should(have.exact_text('Обратная связь'.upper()))
 
         feedback_form.element('[name=fio]').set_value(fio)
