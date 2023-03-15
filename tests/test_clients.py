@@ -30,6 +30,9 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
                 dropdown_otrasl_elem = browser.all('.select-title').element_by(have.exact_text('Отрасль')).element('..').element('.select-section')
                 dropdown_otrasl_elem.click()
                 time.sleep(SLEEP_TIME)
+
+                browser.all('.ik_select_block').with_(timeout=9.0).wait_until(have.size_greater_than_or_equal(1))
+
                 select_block = browser.all('.ik_select_block')[1].all('.ik_select_option')
                 by_text = select_block[j].locate().text
                 print(f'Отрасль: {by_text}')
