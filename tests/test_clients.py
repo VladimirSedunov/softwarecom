@@ -63,7 +63,8 @@ def test_Фильтрация_Клиентов_В_Портфолио(setup_brows
 
                     select_block_usluga[j_usluga].element('..').click()
                     time.sleep(SLEEP_TIME)
-                    print(f'         Услуга: {by_text_usluga.ljust(30)}      {str(len(browser.all(".client-item"))).rjust(5)}')
+                    if by_text_usluga.upper() != 'Все'.upper():
+                        print(f'         Услуга: {by_text_usluga.ljust(30)}      {str(len(browser.all(".client-item"))).rjust(5)}')
 
     except:
         with allure.step("ТС3.3. Сделать скриншот"):
