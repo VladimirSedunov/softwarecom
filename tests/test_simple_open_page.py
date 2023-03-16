@@ -60,7 +60,5 @@ def test_Проверка_Основной_Страницы(setup_browser):
     with allure.step("ТС1.5. Прикрепить лог браузера"):
         add_logs(browser)
 
-    with allure.step("ТС1.6. Прикрепить видеозапись теста"):
-        add_video(browser)
-    #
-    # time.sleep(SLEEP_TIME)
+    # with allure.step("ТС1.6. Прикрепить видеозапись теста"):
+    #     add_video(browser)

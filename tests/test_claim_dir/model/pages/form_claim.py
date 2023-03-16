@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from selene.support.conditions import have, be
 
 from tests.test_claim_dir.data.claim_data import Claim
+from tests.test_claim_dir.model.controls.textbox import Textbox
 
 
 @dataclass
@@ -27,10 +28,17 @@ class Form_Claim:
     def fill(self, claim: Claim, browser):
         browser.element(self.orderForm_CSS).should(be.clickable)
         feedback_form = browser.element(self.orderForm_CSS)
-        feedback_form.element('[name=fio]').should(be.enabled).set_value(claim.fio)
-        feedback_form.element('[name=phone]').should(be.enabled).set_value(claim.phone)
-        feedback_form.element('[name=email]').should(be.enabled).set_value(claim.email)
-        feedback_form.element('[name=text]').should(be.enabled).set_value(claim.text)
+
+        Textbox.set_text(feedback_form, '[name=fio]', claim.fio)
+        Textbox.set_text(feedback_form, '[name=phone]', claim.phone)
+        Textbox.set_text(feedback_form, '[name=email]', claim.email)
+        Textbox.set_text(feedback_form, '[name=text]', claim.text)
+
+        # feedback_form.element('[name=fio]').should(be.enabled).set_value(claim.fio)
+        # feedback_form.element('[name=phone]').should(be.enabled).set_value(claim.phone)
+        # feedback_form.element('[name=email]').should(be.enabled).set_value(claim.email)
+        # feedback_form.element('[name=text]').should(be.enabled).set_value(claim.text)
+
         if claim.pers_data_agree != len(feedback_form.all('.agreeDiv.selected').should(be.existing)) > 0:
             feedback_form.element('.agreeDiv').should(be.clickable).click()
 
