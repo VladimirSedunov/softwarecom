@@ -6,6 +6,8 @@
 # allure.bat serve allure-results
 # pytest tests -m jenkins_ok --collect-only
 # pytest tests -m jenkins_ok                                запуск всех тестов
+# pytest tests -m current_debug                                текущий отладочный тест
+
 
 # =========================================================
 # создать отчёт в заданной директории (allure-report + widgets + summary.json) :

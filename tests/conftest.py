@@ -51,9 +51,12 @@ def setup_browser(request):
         options=options
     )
 
+    # так в курсе 2023 года (3-й поток), а в 1-м потоке было с browser из selene (см.ниже)
     # browser = Browser(Config(driver))
-    browser.config.driver = driver
 
+    browser.config.driver = driver
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
 
     yield browser
 

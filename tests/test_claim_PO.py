@@ -21,6 +21,7 @@ list_claim = [
 
 @allure.title('ТС6. Отправка заявки с главной страницы (с использованием Page Object). ')
 @pytest.mark.jenkins_ok
+@pytest.mark.current_debug
 # @pytest.mark.skip
 @pytest.mark.parametrize("claim", list_claim)
 def test_claim_form(setup_browser, claim):
