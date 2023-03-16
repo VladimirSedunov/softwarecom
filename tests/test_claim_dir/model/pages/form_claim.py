@@ -25,11 +25,12 @@ class Form_Claim:
         self.pers_data_agree = True
 
     def fill(self, claim: Claim, browser):
+        browser.element(self.orderForm_CSS).should(be.clickable)
         feedback_form = browser.element(self.orderForm_CSS)
-        feedback_form.element('[name=fio]').set_value(claim.fio)
-        feedback_form.element('[name=phone]').set_value(claim.phone)
-        feedback_form.element('[name=email]').set_value(claim.email)
-        feedback_form.element('[name=text]').set_value(claim.text)
+        feedback_form.element('[name=fio]').should(be.enabled).set_value(claim.fio)
+        feedback_form.element('[name=phone]').should(be.enabled).set_value(claim.phone)
+        feedback_form.element('[name=email]').should(be.enabled).set_value(claim.email)
+        feedback_form.element('[name=text]').should(be.enabled).set_value(claim.text)
         if claim.pers_data_agree != len(feedback_form.all('.agreeDiv.selected').should(be.existing)) > 0:
             feedback_form.element('.agreeDiv').should(be.clickable).click()
 
