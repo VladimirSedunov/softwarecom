@@ -9,9 +9,6 @@ from tests.utils import attach
 
 DEFAULT_BROWSER_VERSION = '95.0'
 
-# browser.config.window_width = 1900
-# browser.config.window_height = 1000
-
 
 def pytest_addoption(parser):
     parser.addoption('--browser_version', default='95.0')
