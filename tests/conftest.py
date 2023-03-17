@@ -1,7 +1,6 @@
 import allure
 import pytest
 from dotenv import load_dotenv
-# from dotenv.main import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene.support.shared import browser
@@ -10,11 +9,13 @@ from selene.support.shared import browser
 from tests.utils import attach
 
 DEFAULT_BROWSER_VERSION = '95.0'
+DEFAULT_BROWSER = 'chrome'
 
 
 # это хук
 def pytest_addoption(parser):
     parser.addoption('--browser_version', default='96.0')
+    parser.addoption('--browser', default='chrome')
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -28,13 +29,15 @@ def setup_browser(request):
     browser_version = request.config.getoption('--browser_version')
     print(f'browser_version={browser_version}')
     browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
+
+    browser_ = request.config.getoption('--browser')
+    browser_ = browser_ if browser_ != "" else DEFAULT_BROWSER
+
     options = Options()
 
     selenoid_capabilities = {
-        "browserName": "chrome",
-        # "browserName": "firefox",
+        "browserName": browser_,
         "browserVersion": browser_version,
-        # "browserVersion": '101.0',
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
