@@ -1,6 +1,6 @@
 {
 "base": {
-    "logo": "notifications/soft-company.png",
+    "logo": "notifications/softcompany.png",
     "project": "some project",
     "environment": "some env",
     "comment": "some comment",
