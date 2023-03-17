@@ -1,6 +1,6 @@
-tests/allure_results/
+
 #notifications
-000
+tests/allure_results/
 allure-report/
 allure-results/
 .idea
