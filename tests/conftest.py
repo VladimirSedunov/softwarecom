@@ -57,8 +57,8 @@ def setup_browser(request):
     )
 
     browser.config.driver = driver
-    browser.config.window_width = window_size[0]
-    browser.config.window_height = window_size[1]
+    browser.config.window_width = int(window_size[0])
+    browser.config.window_height = int(window_size[1])
 
     yield browser
 
