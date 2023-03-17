@@ -6,8 +6,8 @@ from allure_commons.types import Severity, AttachmentType
 from selene.support.conditions import have, be
 from selene.core.entity import Browser
 
-SLEEP_TIME = 9.0
-SLEEP_TIME2 = 2.0
+SLEEP_TIME = 5.0
+SLEEP_TIME2 = 1.0
 
 
 @allure.title('ТС4. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" : Сообщение (запрос принят)')
