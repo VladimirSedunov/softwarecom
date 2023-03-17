@@ -1,5 +1,5 @@
 tests/allure_results/
-notifications
+#notifications
 000
 allure-report/
 allure-results/
