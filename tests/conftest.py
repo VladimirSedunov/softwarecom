@@ -10,12 +10,14 @@ from tests.utils import attach
 
 DEFAULT_BROWSER_VERSION = '95.0'
 DEFAULT_BROWSER = 'chrome'
+DEFAULT_WINDOW_SIZE = '1024x768'
 
 
 # это хук
 def pytest_addoption(parser):
     parser.addoption('--browser_version', default='96.0')
     parser.addoption('--browser', default='chrome')
+    parser.addoption('--window-size', default='1024x768')
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -25,13 +27,15 @@ def load_env():
 
 @pytest.fixture(scope='session', autouse=True)
 def setup_browser(request):
-
     browser_version = request.config.getoption('--browser_version')
-    print(f'browser_version={browser_version}')
-    browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
+    # print(f'browser_version={browser_version}')
+    # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
 
     browser_ = request.config.getoption('--browser')
-    browser_ = browser_ if browser_ != "" else DEFAULT_BROWSER
+    # browser_ = browser_ if browser_ != "" else DEFAULT_BROWSER
+
+    videoScreenSize = str(request.config.getoption('--window-size'))
+    window_size = videoScreenSize.replace('x', ',').split(',')
 
     options = Options()
 
@@ -40,7 +44,8 @@ def setup_browser(request):
         "browserVersion": browser_version,
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": True
+            "enableVideo": True,
+            "videoScreenSize": videoScreenSize
         }
     }
 
@@ -52,8 +57,8 @@ def setup_browser(request):
     )
 
     browser.config.driver = driver
-    browser.config.window_width = 1920
-    browser.config.window_height = 1080
+    browser.config.window_width = window_size[0]
+    browser.config.window_height = window_size[1]
 
     yield browser
 
