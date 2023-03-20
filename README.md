@@ -1,5 +1,5 @@
 <h1 align="center">Проект по тестированию главной страницы сайта<br>"Софт Компани — цифровой системный интегратор."</h1>
-> <a target="_blank" href="https://">Ссылка на единый портал</a>
+> <a href="https://">Ссылка на единый портал</a>
 
 ![This is an image](/design/images/rosatom-career.ru.jpeg)
 
