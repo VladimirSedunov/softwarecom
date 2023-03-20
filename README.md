@@ -28,9 +28,11 @@ Python = Pytest = Selenium = Selene = Selenoid = Allure Report = Jenkins = Teleg
 
 ### Параметры сборки
 
+* SELECT_TESTS (default: tests -m jenkins_ok). Параметр определяет группу тестов или отдельный тест для запуска.
+* browser (default: chrome). Браузер chrome или firefox
 * login (default user1)
 * password (default 1234)
-* test_group (default ui_tests). Параметр определяет группу тестов для запуска.
+
 
 ### Для запуска автотестов в Jenkins
 #### 1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/09-ElenaSeversk-unit13/">проект</a>
