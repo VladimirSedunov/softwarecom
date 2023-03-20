@@ -1,9 +1,9 @@
 <h1 align="center">Проект по тестированию главной страницы сайта<br>"Софт Компани — цифровой системный интегратор."</h1>
-> <a href="https://softwarecom.ru/">Ссылка на единый портал</a>
+> <a target="_blank" href="https://softwarecom.ru/">Ссылка на единый портал</a>
 
 ![This is an image](/design/images/main_page.PNG)
 
-#### Список проверок, реализованных в автотестах
+### Список проверок, реализованных в автотестах
 - [x] Наличие требуемых заголовков на каждой из страниц, соответствующих пунктам в главном (верхнем) меню
 - [x] Наличие текста с копирайтом "Софт Компани — цифровой интегратор © 2023" и текущего года на основной странице
 - [x] Наличие сообщения 'Страница_не_найдена' при попытке перехода на несуществующую страницу
@@ -17,13 +17,13 @@
 - [x] Те же проверки для сервиса REST API
 
 ## Проект реализован с использованием
-Python Pytest Selene Java Selenoid Jenkins Allure Report Telegram 
+Python = Pytest = Selenium = Selene = Selenoid = Allure Report = Jenkins = Telegram = Java
 
-![](/design/icons/Python.png)![](/design/icons/Pytest.png)![](/design/icons/Selene.png)![](/design/icons/Java.png)![](/design/icons/Selenoid.png)![](/design/icons/Jenkins.png)![](/design/icons/Allure_Report.png)![](/design/icons/Telegram.png)
+![](/design/icons/Python.png)&emsp;![](/design/icons/Pytest.png)&emsp;![](/design/icons/Selenium.png)&emsp;![](/design/icons/Selene.png)&emsp;![](/design/icons/Selenoid.png)&emsp;![](/design/icons/Allure_Report.png)&emsp;![](/design/icons/Jenkins.png)&emsp;![](/design/icons/Telegram.png)&emsp;![](/design/icons/Java.png)
 
-
-# Запуск автотестов выполняется на сервере Jenkins
-> <a target="_blank" href="https://jenkins.autotests.cloud/job/09-ElenaSeversk-unit13/">Ссылка на проект в Jenkins</a>
+<br>
+## Запуск автотестов выполняется на сервере Jenkins
+> <a target="_blank" href="http://10.155.56.61:8888/job/Demo%20test%20softwarecom/">Ссылка на проект в Jenkins</a>
 
 ### Параметры сборки
 
