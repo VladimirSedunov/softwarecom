@@ -17,9 +17,9 @@
 - [x] Те же проверки для сервиса REST API
 
 ## Проект реализован с использованием
-Python Pytest Java Selenoid Jenkins Allure Report Telegram 
+Python Pytest Selene Java Selenoid Jenkins Allure Report Telegram 
 
-![](/design/icons/Python.png)![](/design/icons/Pytest.png)![](/design/icons/Java.png)![](/design/icons/Selenoid.png)![](/design/icons/Jenkins.png)![](/design/icons/Allure_Report.png)![](/design/icons/Telegram.png)
+![](/design/icons/Python.png)![](/design/icons/Pytest.png)![](/design/icons/Selene.png)![](/design/icons/Java.png)![](/design/icons/Selenoid.png)![](/design/icons/Jenkins.png)![](/design/icons/Allure_Report.png)![](/design/icons/Telegram.png)
 
 
 # Запуск автотестов выполняется на сервере Jenkins
