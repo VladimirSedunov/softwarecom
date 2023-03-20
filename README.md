@@ -21,7 +21,7 @@ Python = Pytest = Selenium = Selene = Selenoid = Allure Report = Jenkins = Teleg
 
 ![](/design/icons/Python.png)&emsp;![](/design/icons/Pytest.png)&emsp;![](/design/icons/Selenium.png)&emsp;![](/design/icons/Selene.png)&emsp;![](/design/icons/Selenoid.png)&emsp;![](/design/icons/Allure_Report.png)&emsp;![](/design/icons/Jenkins.png)&emsp;![](/design/icons/Telegram.png)&emsp;![](/design/icons/Java.png)
 
-<br>
+
 ## Запуск автотестов выполняется на сервере Jenkins
 > <a target="_blank" href="http://10.155.56.61:8888/job/Demo test softwarecom/">Ссылка на проект в Jenkins</a>
 
