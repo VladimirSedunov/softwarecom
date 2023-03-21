@@ -56,48 +56,5 @@ pytest tests -m jenkins_ok
 allure.bat serve allure-results
 ```
 
-# Полная статистика по прохождению тестпланов, отчёты и приложения к ним хранятся в Allure TestOps
-> <a target="_blank" href="https://allure.autotests.cloud/project/804">Сссылка на проект в AllureTestOps</a> (запрос доступа admin@qa.guru)
-
-### Тест-планы проекта
-![This is an image](/design/images/testplans.png)
-### Кейсы тест-плана выполнения ручного тестирования
-![This is an image](/design/images/manual.png)
-### Кейсы тест-плана выполнения автотестирования
-![This is an image](/design/images/auto.png)
-### Общий список всех кейсов, имеющихся в системе (без разделения по тест-планам и виду выполнения тестирования)
-![This is an image](/design/images/testcases.png)
-### Пример dashboard с общими результатами тестирования
-![This is an image](/design/images/dashboard_all.png)
-### В том числе сводная статистика запусков
-![This is an image](/design/images/dashboard_all2.png)
-
-### Пример отчёта выполнения одного из автотестов
-![This is an image](/design/images/onecasereport.png)
-#### *После окончания выполнения автотестов по каждому из них в отчёте доступны скриншоты и исходный код страницы, лог консоли браузера и видеозапись выполнения теста.*
-
-### Пример видеозаписи прохождения теста
-![This is an image](/design/images/Video.gif)
-
-
-## По результатам ручного тестирования выявлены дефекты, зафиксированные в соответствующих задачах AllureTestOps
-### Тест план выполнения ручного тестирования
-![This is an image](/design/images/testplan2.png)
-### Сводные результаты ручного тестирования
-![This is an image](/design/images/failedresult.png)
-### Пример описания дефекта в Allure TestOps
-![This is an image](/design/images/testops2.png)
-### Список выявленных дефектов, открытых как задачи в Allure TestOps
-![This is an image](design/images/defects.png)
-
-# Результаты выполнения тестов и информация о выявленных дефектах интегрированы с Atlassian Jira
-> <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-286">Ссылка на задачу в Jira</a> (запрос доступа admin@qa.guru)
-
-Задачи на выявленные дефекты оформлены как подзадачи к данной. Связаны с соответствующими дефектами в Allure TestOps
-
-![This is an image](/design/images/jira_n.png)
-
-## Настроено автоматическое оповещение о результатах сборки Jenkins в Telegram-бот
-![](/design/images/telegram_bot.PNG)
 ## Настроено автоматическое оповещение о результатах сборки Jenkins в Telegram-бот
 ![](/design/images/telegram_bot_ru.PNG)
