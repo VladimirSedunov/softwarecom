@@ -21,7 +21,7 @@ testdata = [
 @allure.title('ТС5. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" (Параметризованный тест)')
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
-@pytest.mark.xfail
+# @pytest.mark.xfail
 # @pytest.mark.skip
 @pytest.mark.parametrize("title, fio, email, phone, text, pers_data_agree, is_error, result_message", testdata)
 def test_parametrize(setup_browser, title, fio, email, phone, text, pers_data_agree, is_error, result_message):
