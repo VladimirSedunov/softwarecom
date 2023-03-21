@@ -63,7 +63,7 @@ allure.bat serve allure-results
 ![](/design/video/test_video.MP4)
 
 ## Видеоотчёт теста
-![](/design/video/test_video.GIF)
+![](https://github.com/VladimirSedunov/softwarecom/blob/master/design/video/test_video.mp4)
 ## tttt
 ![Web Site System](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/web_site_system.gif)
 
