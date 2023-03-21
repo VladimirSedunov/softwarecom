@@ -12,6 +12,7 @@ DEFAULT_BROWSER_VERSION = '95.0'
 DEFAULT_BROWSER = 'chrome'
 DEFAULT_WINDOW_SIZE = '1024x768'
 
+
 # это хук
 def pytest_addoption(parser):
     parser.addoption('--browser_version', default='96.0')
@@ -24,10 +25,9 @@ def load_env():
     load_dotenv()
 
 
-# @pytest.fixture(scope='session', autouse=True)
-@pytest.fixture(scope='module', autouse=True)
+@pytest.fixture(scope='session', autouse=True)
+# @pytest.fixture(scope='module', autouse=True)
 def setup_browser(request):
-
     browser_version = request.config.getoption('--browser_version')
     # print(f'browser_version={browser_version}')
     # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
@@ -36,7 +36,7 @@ def setup_browser(request):
     # browser_ = browser_ if browser_ != "" else DEFAULT_BROWSER
 
     videoScreenSize = str(request.config.getoption('--window-size'))
-    window_size = videoScreenSize.replace('x',',').split(',')
+    window_size = videoScreenSize.replace('x', ',').split(',')
 
     options = Options()
 
