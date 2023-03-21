@@ -60,10 +60,4 @@ allure.bat serve allure-results
 ![](/design/images/telegram_bot_ru.PNG)
 
 ## Видеоотчёт теста
-![](/design/video/test_video.MP4)
-
-## Видеоотчёт теста
 ![](https://github.com/VladimirSedunov/softwarecom/blob/master/design/video/test_video.gif)
-## tttt
-![Web Site System](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/web_site_system.gif)
-
