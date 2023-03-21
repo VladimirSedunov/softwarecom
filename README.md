@@ -37,14 +37,16 @@ Python = Pytest = Selenium = Selene = Selenoid = Allure Report = Jenkins = Teleg
 ### Для запуска автотестов в Jenkins
 #### 1. Открыть <a target="_blank" href="http://10.155.56.61:8888/job/Demo test softwarecom/">проект</a>
 
-![This is an image](/design/images/jenkins1.PNG)
+![](/design/images/jenkins1.PNG)
 
 #### 2. Выбрать пункт **Собрать с параметрами**
 #### 3. В случае необходимости изменить параметры, выбрав значения из выпадающих списков
-#### 4. Нажать **Собрать**
+#### 4. Нажать **Собрать с параметрами**
+![](/design/images/jenkins1_sobrat.PNG)
+
 #### 5. Результат запуска сборки можно посмотреть в отчёте Allure
 
-![This is an image](/design/images/jenkins2a.png)
+![Собрать с параметрами](/design/images/jenkins2a.png)
 
 ## Локальный запуск автотестов
 Пример командной строки:
