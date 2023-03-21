@@ -3,6 +3,7 @@
 
 ![This is an image](/design/images/main_page.png)
 
+
 ### Список проверок, реализованных в автотестах
 - [x] Наличие требуемых заголовков на каждой из страниц, соответствующих пунктам в главном (верхнем) меню
 - [x] Наличие текста с копирайтом "Софт Компани — цифровой интегратор © 2023" и текущего года на основной странице
@@ -38,6 +39,7 @@ Python = Pytest = Selenium = Selene = Selenoid = Allure Report = Jenkins = Teleg
 #### 1. Открыть <a target="_blank" href="http://10.155.56.61:8888/job/Demo test softwarecom/">проект</a>
 
 ![This is an image](/design/images/jenkins1.png)
+![This is an image](/design/images/main_page.png)
 
 #### 2. Выбрать пункт **Собрать с параметрами**
 #### 3. В случае необходимости изменить параметры, выбрав значения из выпадающих списков
