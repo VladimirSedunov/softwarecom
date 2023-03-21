@@ -61,3 +61,6 @@ allure.bat serve allure-results
 
 ## Видеоотчёт теста
 ![](/design/video/test_video.MP4)
+
+## Видеоотчёт теста
+![](/design/video/test_video.gif)
