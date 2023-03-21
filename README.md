@@ -64,3 +64,6 @@ allure.bat serve allure-results
 
 ## Видеоотчёт теста
 ![](/design/video/test_video.GIF)
+## tttt
+![Web Site System](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/web_site_system.gif)
+
