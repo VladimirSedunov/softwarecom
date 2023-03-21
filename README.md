@@ -47,13 +47,13 @@ Python = Pytest = Selenium = Selene = Selenoid = Allure Report = Jenkins = Teleg
 
 ## Локальный запуск автотестов
 Пример командной строки:
-```bash
-gradle clean ui_tests -Dlogin=user1 -Dpassword=1234 -DtestUrl=selenoid.autotests.cloud/wd/hub/
+```
+pytest tests -m jenkins_ok
 ```
 
 Получение отчёта:
-```bash
-allure serve build/allure-results
+```
+allure.bat serve allure-results
 ```
 
 # Полная статистика по прохождению тестпланов, отчёты и приложения к ним хранятся в Allure TestOps
@@ -97,9 +97,5 @@ allure serve build/allure-results
 
 ![This is an image](/design/images/jira_n.png)
 
-# Настроено автоматическое оповещение о результатах сборки Jenkins в Telegram-бот
-![This is an image](/design/images/bot.png)
-
-
-:heart: <a target="_blank" href="https://qa.guru">qa.guru</a><br/>
-:blue_heart: <a target="_blank" href="https://t.me/qa_automation">t.me/qa_automation</a>
+## Настроено автоматическое оповещение о результатах сборки Jenkins в Telegram-бот
+![](/design/images/telegram_bot.jpg)
