@@ -23,7 +23,7 @@ list_claim = [
 @pytest.mark.jenkins_ok
 @pytest.mark.current_debug
 # @pytest.mark.skip
-@pytest.mark.xfail('err')
+# @pytest.mark.xfail('err')
 @pytest.mark.parametrize("claim", list_claim)
 def test_claim_form(setup_browser, claim):
 
