@@ -2,6 +2,7 @@
 > <a target="_blank" href="https://softwarecom.ru/">Ссылка на единый портал</a>
 
 ![This is an image](/design/images/main_page.png)
+![This is an image](/design/images/main_page.png)
 
 
 ### Список проверок, реализованных в автотестах
