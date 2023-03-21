@@ -1,9 +1,7 @@
 <h1 align="center">Проект по тестированию главной страницы сайта<br>"Софт Компани — цифровой системный интегратор."</h1>
 > <a target="_blank" href="https://softwarecom.ru/">Ссылка на единый портал</a>
 
-![This is an image](/design/images/main_page.png)
-![This is an image](/design/images/main_page.png)
-
+![This is an image](/design/images/main_page.PNG)
 
 ### Список проверок, реализованных в автотестах
 - [x] Наличие требуемых заголовков на каждой из страниц, соответствующих пунктам в главном (верхнем) меню
