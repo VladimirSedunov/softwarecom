@@ -98,4 +98,4 @@ allure.bat serve allure-results
 ![This is an image](/design/images/jira_n.png)
 
 ## Настроено автоматическое оповещение о результатах сборки Jenkins в Telegram-бот
-![](/design/images/telegram_bot.jpg)
+![](/design/images/telegram_bot.PNG)
