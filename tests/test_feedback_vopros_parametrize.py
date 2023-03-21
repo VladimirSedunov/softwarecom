@@ -10,10 +10,10 @@ SLEEP_TIME2 = 0.5
 
 testdata = [
     ('Позитивный сценарий', 'Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', True, False,
-     '!!! ERROR !!! Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'),
-    ('Нет ФИО', '', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', True, True, '!!! ERROR !!! Укажите Ваше Ф.И.О!'),
-    ('Нет email', 'Тут Пишем ФИО', '', 'Это_телефон', 'Это сообщение', False, True, '!!! ERROR !!! Укажите правильный e-mail!'),
-    ('Нет телефона', 'Тут Пишем ФИО', 'this_is@email.mail', '', 'Это сообщение', True, True, '!!! ERROR !!! Укажите Ваш контактный телефон!'),
+     'Спасибо! Ваш запрос принят, в ближайшее время мы с вами обязательно свяжемся.'),
+    ('Нет ФИО', '', 'this_is@email.mail', 'Это_телефон', 'Это сообщение', True, True, 'Укажите Ваше Ф.И.О!'),
+    ('Нет email', 'Тут Пишем ФИО', '', 'Это_телефон', 'Это сообщение', False, True, 'Укажите правильный e-mail!'),
+    ('Нет телефона', 'Тут Пишем ФИО', 'this_is@email.mail', '', 'Это сообщение', True, True, 'Укажите Ваш контактный телефон!'),
     ('Нет сообщения', 'Тут Пишем ФИО', 'this_is@email.mail', 'Это_телефон', '', False, True, '!!! ERROR !!! Введите Ваше сообщение!')
 ]
 
@@ -21,7 +21,6 @@ testdata = [
 @allure.title('ТС5. Отправка сообщения из меню "Обратная Связь" / "Задать вопрос" (Параметризованный тест)')
 @allure.severity(Severity.NORMAL)
 @pytest.mark.jenkins_ok
-# @pytest.mark.xfail
 # @pytest.mark.skip
 @pytest.mark.parametrize("title, fio, email, phone, text, pers_data_agree, is_error, result_message", testdata)
 def test_parametrize(setup_browser, title, fio, email, phone, text, pers_data_agree, is_error, result_message):
