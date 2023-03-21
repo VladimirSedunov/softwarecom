@@ -100,4 +100,4 @@ allure.bat serve allure-results
 ## Настроено автоматическое оповещение о результатах сборки Jenkins в Telegram-бот
 ![](/design/images/telegram_bot.PNG)
 
-![](/design/images/telegram_bot_ru.PNG)
+![](/design/images/telegram_bot_ru.png)
