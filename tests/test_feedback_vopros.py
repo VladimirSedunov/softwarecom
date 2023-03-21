@@ -15,6 +15,7 @@ SLEEP_TIME2 = 1.0
 @pytest.mark.jenkins_ok
 # @pytest.mark.skip
 def test_positive(setup_browser):
+    pytest.fail('!!! ERROR !!! ')
     browser: Browser = setup_browser
     base_url = os.getenv('BASE_URL')
 
