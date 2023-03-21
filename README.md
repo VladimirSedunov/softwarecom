@@ -1,7 +1,7 @@
 <h1 align="center">Проект по тестированию главной страницы сайта<br>"Софт Компани — цифровой системный интегратор."</h1>
 > <a target="_blank" href="https://softwarecom.ru/">Ссылка на единый портал</a>
 
-![This is an image](/design/images/main_page.PNG)
+![This is an image](/design/images/main_page.png)
 
 ### Список проверок, реализованных в автотестах
 - [x] Наличие требуемых заголовков на каждой из страниц, соответствующих пунктам в главном (верхнем) меню
@@ -37,7 +37,7 @@ Python = Pytest = Selenium = Selene = Selenoid = Allure Report = Jenkins = Teleg
 ### Для запуска автотестов в Jenkins
 #### 1. Открыть <a target="_blank" href="http://10.155.56.61:8888/job/Demo test softwarecom/">проект</a>
 
-![](/design/images/jenkins1.png)
+![This is an image](/design/images/jenkins1.png)
 
 #### 2. Выбрать пункт **Собрать с параметрами**
 #### 3. В случае необходимости изменить параметры, выбрав значения из выпадающих списков
