@@ -37,4 +37,4 @@ def test_Проверка_Контактных_Данных(setup_browser):
 
         assert address == real_address, f'Адрес отличается от реального: "{real_address}"'
         assert email == real_email, f'E-mail отличается от реального: "{real_email}"'
-        assert phone == real_phone, f'Телефон отличается от реального: "{real_phone}"'
+        assert phone == real_phone, f'!!! ERROR !!!   Телефон отличается от реального: "{real_phone}"'

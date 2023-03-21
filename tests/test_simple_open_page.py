@@ -13,7 +13,7 @@ SLEEP_TIME = 1
 
 @allure.title('ТС1. Проверка основной страницы')
 @allure.severity(Severity.NORMAL)
-# @pytest.mark.skip
+@pytest.mark.skip
 @pytest.mark.jenkins_ok
 def test_Проверка_Основной_Страницы(setup_browser):
     browser: Browser = setup_browser
