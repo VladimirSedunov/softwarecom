@@ -93,6 +93,7 @@ def test_API_Отправить_Заявку(setup_browser, claim_about):
 
             with allure.step("ТС8.2. Получить ответ"):
                 response: Response = requests.post(url=url, data=data, headers=headers)
+
                 real_status_code = response.status_code
                 real_is_err = response.json()[0]
                 real_message = response.json()[1]
