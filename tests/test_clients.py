@@ -17,10 +17,11 @@ SLEEP_TIME = 0.5
 @pytest.mark.jenkins_ok
 def test_Фильтрация_Клиентов_В_Портфолио(setup_browser):
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС3.1. Открыть страницу Портфолио"):
-        browser.open(f"{base_url}/clients/")
+        # browser.open(f"{base_url}/clients/")
+        browser.open(f"/clients/")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Клиенты')) is not None
     try:
         with allure.step("ТС3.2. Цикл по всем отраслям и услугам"):

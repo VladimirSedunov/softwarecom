@@ -19,10 +19,11 @@ def test_positive(setup_browser):
     # pytest.fail('!!! ERROR !!! ')
 
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС4.1. Открыть страницу 'Контакты'"):
-        browser.open(f"{base_url}/contacts/")
+        # browser.open(f"{base_url}/contacts/")
+        browser.open(f"/contacts/")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
@@ -52,10 +53,11 @@ def test_positive(setup_browser):
 # @pytest.mark.skip
 def test_blank_fio(setup_browser):
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС4а.1. Открыть страницу 'Контакты'"):
-        browser.open(f"{base_url}/contacts/")
+        # browser.open(f"{base_url}/contacts/")
+        browser.open(f"/contacts/")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4а.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
@@ -85,10 +87,11 @@ def test_blank_fio(setup_browser):
 # @pytest.mark.skip
 def test_blank_email(setup_browser):
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС4б.1. Открыть страницу 'Контакты'"):
-        browser.open(f"{base_url}/contacts/")
+        # browser.open(f"{base_url}/contacts/")
+        browser.open(f"/contacts/")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4б.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
@@ -118,10 +121,11 @@ def test_blank_email(setup_browser):
 # @pytest.mark.skip
 def test_blank_phone(setup_browser):
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС4в.1. Открыть страницу 'Контакты'"):
-        browser.open(f"{base_url}/contacts/")
+        # browser.open(f"{base_url}/contacts/")
+        browser.open(f"/contacts/")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4в.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):
@@ -151,10 +155,11 @@ def test_blank_phone(setup_browser):
 # @pytest.mark.skip
 def test_blank_text(setup_browser):
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС4г.1. Открыть страницу 'Контакты'"):
-        browser.open(f"{base_url}/contacts/")
+        # browser.open(f"{base_url}/contacts/")
+        browser.open(f"/contacts/")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС4г.2. Открыть диалоговое окно Обратная Связь / Задать вопрос"):

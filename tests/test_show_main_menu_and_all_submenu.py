@@ -21,10 +21,11 @@ SLEEP_TIME12 = 1.1
 @pytest.mark.jenkins_ok
 def test_show_main_menu_and_all_submenu(setup_browser):
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     with allure.step("ТС2.1. Открыть главную страницу"):
-        browser.open(f"{base_url}/")
+        # browser.open(f"{base_url}/")
+        browser.open(f"/")
         assert browser.element('.page .company_about').element('h1').should(have.exact_text('Софт Компани — цифровой системный интегратор.'))
 
     with allure.step("ТС2.2. Пройти по верхнему меню наведением курсора мыши"):

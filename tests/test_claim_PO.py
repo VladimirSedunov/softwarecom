@@ -28,11 +28,11 @@ list_claim = [
 def test_claim_form(setup_browser, claim):
 
     browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     allure.dynamic.title('ТС6. Отправка заявки с главной страницы (с использованием Page Object). ' + claim.title)
 
-    form_main = Form_Main(base_url)
+    form_main = Form_Main(browser.config.base_url)
 
     with allure.step("ТС6.1. Открыть страницу 'Компания'"):
         form_main.open(browser)

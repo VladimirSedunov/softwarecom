@@ -14,14 +14,15 @@ from selene.core.entity import Browser
 def test_Проверка_Контактных_Данных(setup_browser):
 
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     real_address = '125190, Москва, Ленинградский проспект, 80к37, 5 этаж'
     real_email = 'E-mail: info@softwarecom.ru'
     real_phone = 'Tел. +7 (495) 983-05-48'
 
     with allure.step("ТС7.1. Открыть страницу 'Контакты'"):
-        browser.open(f"{base_url}/contacts/")
+        # browser.open(f"{base_url}/contacts/")
+        browser.open(f"/contacts/")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Контакты')).should(be.existing)
 
     with allure.step("ТС7.2. Проверить наличие блока контактных данных"):
@@ -37,4 +38,4 @@ def test_Проверка_Контактных_Данных(setup_browser):
 
         assert address == real_address, f'Адрес отличается от реального: "{real_address}"'
         assert email == real_email, f'E-mail отличается от реального: "{real_email}"'
-        assert phone == real_phone, f'!!!! ERROR !!!   Телефон отличается от реального: "{real_phone}"'
+        assert phone == real_phone, f'Телефон отличается от реального: "{real_phone}"'

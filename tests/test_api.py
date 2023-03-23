@@ -59,7 +59,7 @@ def test_API_Отправить_Заявку(setup_browser, claim_about):
     logging.info(f'claim_about = {claim_about}')
 
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     url = "https://softwarecom.ru/ajax/btnorder.php"
     is_robot = True
@@ -91,8 +91,8 @@ def test_API_Отправить_Заявку(setup_browser, claim_about):
                 'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Host': 'softwarecom.ru',
-                'Origin': f'{base_url}',
-                'Referer': f'{base_url}',
+                'Origin': f'{browser.config.base_url}',
+                'Referer': f'{browser.config.base_url}',
                 'Cookie': f'{cookie};'
             }
 
@@ -106,7 +106,7 @@ def test_API_Отправить_Заявку(setup_browser, claim_about):
                 print(response.json())
 
                 if real_message == mess_is_robot:
-                    cookie = cookies_get_from_UI(browser, base_url)
+                    cookie = cookies_get_from_UI(browser, browser.config.base_url)
                     cookies_write_to_file(cookie, fname_cookies)
                     is_robot = True
 

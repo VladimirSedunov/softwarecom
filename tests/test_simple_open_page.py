@@ -17,10 +17,11 @@ SLEEP_TIME = 1
 @pytest.mark.jenkins_ok
 def test_Проверка_Основной_Страницы(setup_browser):
     browser: Browser = setup_browser
-    base_url = os.getenv('BASE_URL')
+    # base_url = os.getenv('BASE_URL')
 
     mess_page_blocked = 'Сайт softwarecom.ru пока не может обработать этот запрос.'
-    browser.open(f"{base_url}/")
+    # browser.open(f"{base_url}/")
+    browser.open(f"/")
 
     time.sleep(SLEEP_TIME)
 
@@ -47,7 +48,8 @@ def test_Проверка_Основной_Страницы(setup_browser):
     time.sleep(SLEEP_TIME)
 
     with allure.step("ТС1.4. Открыть несуществующую страницу"):
-        browser.open(f"{base_url}/about/err-err-err")
+        # browser.open(f"{base_url}/about/err-err-err")
+        browser.open(f"/about/err-err-err")
         assert browser.element('.controls-page-box .h1').should(have.exact_text('Страница не найдена'))
         assert browser.element('.not-fount-collum-2').should(have.text('Страница которую вы запросили, отсутствует на нашем сайте.'))
         assert browser.element('.not-fount-collum-2 [href="/"]').should(have.exact_text('главной страницей'))
