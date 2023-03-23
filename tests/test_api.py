@@ -10,6 +10,7 @@ from selene.core.entity import Browser
 from selene.support.conditions import be
 from dataclasses import dataclass
 
+import logging
 
 @dataclass
 class Claim_about:
@@ -53,6 +54,10 @@ list_claim_about = [
 @pytest.mark.jenkins_ok
 @pytest.mark.parametrize("claim_about", list_claim_about)
 def test_API_Отправить_Заявку(setup_browser, claim_about):
+
+    logging.info('Логирование')
+    logging.info(f'claim_about = {claim_about}')
+
     browser: Browser = setup_browser
     base_url = os.getenv('BASE_URL')
 
